@@ -35,7 +35,14 @@
 	<body>
 		
 			<header class="mui-bar mui-bar-nav" style="padding-right: 15px;">
+			
+			<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+					<a href="menu.php"> 菜单</a>
+			</button>
+				
 			<h1 class="mui-title">impressed</h1>
+
+			
 			<button id='setting' class=" mui-pull-right mui-btn-link"><a href="add.php"> 设置</a></button>
 		</header>
 			<div class="mui-content">

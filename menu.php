@@ -182,10 +182,10 @@
 					<div class="mui-scroll">
 						<ul class="mui-table-view mui-table-view-chevron">
 							<li class="mui-table-view-cell">
-								<a id="rate" class="mui-navigate-right">Creat New Account</a>
+								<a id="rate" class="mui-navigate-right" href="reg.php">Creat New Account</a>
 							</li>
 							<li class="mui-table-view-cell">
-								<a id="share" class="mui-navigate-right">Sign In</a>
+								<a id="share" class="mui-navigate-right" href="login.php">Sign In</a>
 							</li>
 							<li class="mui-table-view-cell">
 								<a id="tel" class="mui-navigate-right">Speak wit Us</a>
