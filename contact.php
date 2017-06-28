@@ -171,7 +171,7 @@
 				<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
 					<span class="mui-icon mui-icon-left-nav"></span>
 				</button>
-				<h1 class="mui-center mui-title">设置</h1>
+				<h1 class="mui-center mui-title">Contact Us</h1>
 			</div>
 			<!--页面标题栏结束-->
 			
