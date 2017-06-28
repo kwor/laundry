@@ -182,47 +182,20 @@
 					<div class="mui-scroll">
 						<ul class="mui-table-view mui-table-view-chevron">
 							<li class="mui-table-view-cell">
-								<a id="rate" class="mui-navigate-right" href="reg.php">Creat New Account</a>
-							</li>
-							<li class="mui-table-view-cell">
-								<a id="share" class="mui-navigate-right" href="login.php">Sign In</a>
-							</li>
-								<li class="mui-table-view-cell">
 								<a id="feedback-btn" href="#feedback" class="mui-navigate-right">Speak wit Us</a>
 							</li>
 							<li class="mui-table-view-cell">
-								<a id="tel" class="mui-navigate-right">Share and Save</a>
+								<a id="tel" class="mui-navigate-right" href="#">28830810</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a id="share" class="mui-navigate-right" href="mailto:kwor@163.com">Email</a>
 							</li>
 						
+				 
+						
 						</ul>
-						<ul class="mui-table-view mui-table-view-chevron">
-							<li class="mui-table-view-cell">
-								<a href="#lock" class="mui-navigate-right">News and Promotion</a>
-							</li>
-							<li class="mui-table-view-cell">
-								<a href="#lock" class="mui-navigate-right">Tutorial</a>
-							</li>
-							<li class="mui-table-view-cell">
-								<a href="#lock" class="mui-navigate-right">FAQ</a>
-							</li>
-							<li class="mui-table-view-cell">
-								<a href="#lock" class="mui-navigate-right">like Us on Facebook</a>
-							</li>
-							<li class="mui-table-view-cell">
-								<a href="#lock" class="mui-navigate-right">Rate Us in App Store</a>
-							</li>							
-							<li class="mui-table-view-cell">
-								<a href="#lock" class="mui-navigate-right">About Us</a>
-							</li>
-							<li class="mui-table-view-cell">
-								<a href="contact.php" class="mui-navigate-right">Contact Us</a>
-							</li>
-						</ul>
-						<ul class="mui-table-view">
-							<li class="mui-table-view-cell" style="text-align: center;">
-								<a id='exit'>退出</a>
-							</li>
-						</ul>
+				
+					 
 					</div>
 				</div>
 			</div>
@@ -381,25 +354,7 @@
 			});
 		});
 
-		function shareMessage(share, ex) {
-				var msg = {
-					extra: {
-						scene: ex
-					}
-				};
-				msg.href = "http://www.dcloud.io/hellomui/";
-				msg.title = "最接近原生APP体验的高性能前端框架";
-				msg.content = "我正在体验HelloMUI，果然很流畅，基本看不出和原生App的差距";
-				if (~share.id.indexOf('weibo')) {
-					msg.content += "；体验地址：http://www.dcloud.io/hellomui/";
-				}
-				msg.thumbs = ["_www/images/logo.png"];
-				share.send(msg, function() {
-					console.log("分享到\"" + share.description + "\"成功！ ");
-				}, function(e) {
-					console.log("分享到\"" + share.description + "\"失败: " + e.code + " - " + e.message);
-				});
-			}
+
 			//去评分
 		document.getElementById("rate").addEventListener('tap', function() {
 			if (mui.os.ios) {
