@@ -55,11 +55,11 @@
      
      
      
-						<div class="mui-card-header mui-card-media" style="height:40vw;background-image:url(images/cbd.jpg);margin-bottom: 2px;">
+	 <div class="mui-card-header mui-card-media" style="height:40vw;background-image:url(images/cbd.jpg);margin-bottom: 2px;">
 							
-							<li class="mui-table-view-cell">Item 1 
+	<div class="mui-table-view-cell">Item 1
         <span class="mui-badge mui-badge-primary">11</span>
-    </li>
+    </div>
 							
 						</div>
 			
@@ -67,9 +67,9 @@
    
    		<div class="mui-card-header mui-card-media" style="height:40vw;background-image:url(images/cbd.jpg);margin-bottom: 2px;">
 							
-							<li class="mui-table-view-cell">Item 1 
+	<div class="mui-table-view-cell">Item 1 
         <span class="mui-badge mui-badge-primary">11</span>
-    </li>
+    </div>
 							
 						</div>
    
@@ -90,11 +90,7 @@
 					var state = app.getState();
 					account.innerText = state.account;
 				}, false);
-				$.plusReady(function() {
-					var settingPage = $.preload({
-						"id": 'add',
-						"url": 'add.html'
-					});
+			
 					//设置
 					var settingButton = doc.getElementById('setting');
 					//settingButton.style.display = settings.autoLogin ? 'block' : 'none';

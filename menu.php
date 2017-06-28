@@ -187,12 +187,13 @@
 							<li class="mui-table-view-cell">
 								<a id="share" class="mui-navigate-right" href="login.php">Sign In</a>
 							</li>
-							<li class="mui-table-view-cell">
-								<a id="tel" class="mui-navigate-right">Speak wit Us</a>
+								<li class="mui-table-view-cell">
+								<a id="feedback-btn" href="#feedback" class="mui-navigate-right">Speak wit Us</a>
 							</li>
 							<li class="mui-table-view-cell">
-								<a id="feedback-btn" href="#feedback" class="mui-navigate-right">Share and Save</a>
+								<a id="tel" class="mui-navigate-right">Share and Save</a>
 							</li>
+						
 						</ul>
 						<ul class="mui-table-view mui-table-view-chevron">
 							<li class="mui-table-view-cell">
