@@ -5,15 +5,19 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
 		<title></title>
 		<link href="css/mui.min.css" rel="stylesheet" />
-
-	<style>
+		<link href="css/index.css" rel="stylesheet" />
+		<style>
 			ul {
 				font-size: 14px;
 				color: #8f8f94;
+				list-style: none;
+				margin: 0;
+				padding: 0;
 			}
 			.mui-btn {
 				padding: 10px;
 			}
+			
 		</style>
 		<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 		<script type="text/javascript">
@@ -33,54 +37,60 @@
 		</script>
 	</head>
 	<body>
-		
-			<header class="mui-bar mui-bar-nav" style="padding-right: 15px;">
-			
+		<header class="mui-bar mui-bar-nav" style="padding-right: 15px;">
 			<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
 					<a href="menu.php"> 菜单</a>
-			</button>
-				
+			</button>	
 			<h1 class="mui-title">impressed</h1>
-
-			
 			<button id='setting' class=" mui-pull-right mui-btn-link"><a href="add.php"> 设置</a></button>
 		</header>
-			<div class="mui-content">
+		<div class="mui-content">
 			<div class="mui-content-padded">
-	 
-      <div class="mui-input-row mui-search">
-    <input type="search" class="mui-input-clear" placeholder="">
-</div>
-     
-     
-     
-     
-	 <div class="mui-card-header mui-card-media" style="height:40vw;background-image:url(images/cbd.jpg);margin-bottom: 2px;">
-							
-	<div class="mui-table-view-cell">Item 1
-        <span class="mui-badge mui-badge-primary">11</span>
-    </div>
-							
-						</div>
-			
-   
-   
-   		<div class="mui-card-header mui-card-media" style="height:40vw;background-image:url(images/cbd.jpg);margin-bottom: 2px;">
-							
-	<div class="mui-table-view-cell">Item 1 
-        <span class="mui-badge mui-badge-primary">11</span>
-    </div>
-							
-						</div>
-   
-   
- 
+	      		<div class="mui-input-row mui-search">
+	    				<input type="search" class="mui-input-clear" placeholder="">
+				</div>
+				<!--导航start-->
+				<div class="nav">
+					<ul>
+						<li>list1</li>
+						<li>list1</li>
+						<li>list1</li>
+						<li>list1</li>
+						<li>list1</li>
+						<li>list1</li>
+						<li>list1</li>
+						<li>list1</li>
+						<li>list1</li>
+						<li>list1</li>
+					</ul>
+				</div>
+				<!--导航end-->
+				<ul>
+					<li  class="mui-card-header mui-card-media clicksnum"  style="height:40vw;background-image:url(images/cbd.jpg);margin-bottom: 2px;">					
+						<div class="price"><a>$222</a></div>
+						<div class="clicks"><a>11</a></div>		
+					</li>
+		   			<li class="mui-card-header mui-card-media clicksnum" style="height:40vw;background-image:url(images/cbd.jpg);margin-bottom: 2px;">		
+						<div class="price"><a>$222</a></div>
+						<div class="clicks"><a>11</a></div>	
+					</li>
+				</ul>
 			</div>
 		</div>
-
 		<script src="js/mui.min.js"></script>
 		<script src="js/app.js"></script>
+		<script src="js/jquery-3.2.1.min.js"></script>
 		<script>
+			//点击图片次数
+			var i = 0;
+			$('.clicksnum').click(function(){
+				i++;
+				var num = $(this).children('.clicks');	
+				num.show();		
+				num.children('a').html(i);
+			});
+		</script>
+			<script>
 			(function($, doc) {
 				$.init();
 				var settings = app.getSettings();
