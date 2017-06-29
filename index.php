@@ -38,48 +38,53 @@
 	</head>
 	<body>
 		<header class="mui-bar mui-bar-nav" style="padding-right: 15px;">
-			<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
-					<a href="menu.php"> 菜单</a>
+			<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left"  >
+				<a class="mui-icon mui-icon-bars" href="menu.php"></a>
 			</button>	
 			<h1 class="mui-title">impressed</h1>
-			<button id='setting' class=" mui-pull-right mui-btn-link"><a href="add.php"> 设置</a></button>
+			<button id='setting' class=" mui-pull-right mui-btn-link " >
+				<a class="mui-icon mui-icon-trash" href="add.php"></a>
+				<div class="clicks_total">
+					<span>11</span>
+				</div>
+			</button>
 		</header>
 		<div class="mui-content">
-			<div class="mui-content-padded">
-	      		<div class="mui-input-row mui-search">
-	    				<input type="search" class="mui-input-clear" placeholder="">
+			<div class="">
+	      		<div class=" mui-content-padded mui-input-row mui-search" >
+	    				<input type="search" class="mui-input-clear" placeholder="" style="background: #FFFFFF;">
 				</div>
 				<!--导航start-->
-						<div class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
-    <div class="mui-scroll">
-        <a class="mui-control-item mui-active">
-           list1
-        </a>
-        <a class="mui-control-item">
-            热点
-        </a>
-        <a class="mui-control-item">
-            北京
-        </a>
-        <a class="mui-control-item">
-            社会
-        </a>
-        <a class="mui-control-item">
-            娱乐
-        </a>
-        <a class="mui-control-item">
-            科技
-        </a>
-    </div>
-</div>
+				<div style="background: #FFFFFF; top:-2vh;" class=" mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted" style="top:-2vh;">
+				    <div class="mui-scroll nav-list" style="color:rgba(152, 150, 150, 0.71);font-size:2vh ;">
+				        <a class="mui-control-item mui-active">
+				           list1
+				        </a>
+				        <a class="mui-control-item">
+				            热点
+				        </a>
+				        <a class="mui-control-item">
+				            北京
+				        </a>
+				        <a class="mui-control-item">
+				            社会
+				        </a>
+				        <a class="mui-control-item">
+				            娱乐
+				        </a>
+				        <a class="mui-control-item">
+				            科技
+				        </a>
+				    </div>
+				</div>
 
 				<!--导航end-->
-				<ul>
-					<li  class="mui-card-header mui-card-media clicksnum"  style="height:40vw;background-image:url(images/cbd.jpg);margin-bottom: 2px;">					
+				<ul style="margin-top:-2vh;" class="image-ul">
+					<li  class="mui-card-header mui-card-media clicksnum"  style="height:40vw;background-image:url(images/cbd.jpg);margin-bottom: 1px;">					
 						<div class="price"><a>$222</a></div>
 						<div class="clicks"><a>11</a></div>		
 					</li>
-		   			<li class="mui-card-header mui-card-media clicksnum" style="height:40vw;background-image:url(images/cbd.jpg);margin-bottom: 2px;">		
+		   			<li class="mui-card-header mui-card-media clicksnum" style="height:40vw;background-image:url(images/cbd.jpg);margin-bottom: 1px;">		
 						<div class="price"><a>$222</a></div>
 						<div class="clicks"><a>11</a></div>	
 					</li>
@@ -94,9 +99,39 @@
 			var i = 0;
 			$('.clicksnum').click(function(){
 				i++;
-				var num = $(this).children('.clicks');	
-				num.show();		
-				num.children('a').html(i);
+				$(this).children('.clicks').show().children('a').html(i);		
+				$('.clicks_total').show().children('span').html(i);
+				//点击图片商品次数变化
+				$(this).children('.clicks').animate({
+				     width:'8vw',
+				     height:"8vw",
+				     borderRadius:'4vw',
+				     fontSize:'2vh',
+				     lineHeight:'8vw',
+			    },100,function(){
+				    	$(this).animate({
+					     width:'5vw',
+					     height:"5vw",
+					     borderRadius:'2.5vw',
+					     fontSize:'1vh',
+					     lineHeight:'5vw',
+				    },100);
+				 });   
+				$(".clicks_total").animate({
+				     width:'8vw',
+				     height:"8vw",
+				     borderRadius:'4vw',
+				     fontSize:'2vh',
+				     lineHeight:'8vw',
+			    },100,function(){
+				    	$(".clicks_total").animate({
+					     width:'5vw',
+					     height:"5vw",
+					     borderRadius:'2.5vw',
+					     fontSize:'1vh',
+					     lineHeight:'5vw',
+				    },100);
+			    });
 			});
 		</script>
 			<script>

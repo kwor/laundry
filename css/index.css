@@ -1,7 +1,9 @@
 .price a{position: absolute;width: 100%;height: 100%;color: #FFFFFF; text-align: center; line-height: 10vw;	font-size: 1vh;}
 .price{position: relative;left: 5vw;top: 5vw;background-color:#000000; width:10vw;height:10vw;border-radius:5vw; opacity: 0.6;}
-.clicks{display:none;position: relative;left: 87vw;top: -8vw;background-color:#0019cc; width:6vw;height:6vw;border-radius:5vw; opacity: 0.6;}
-.clicks a{position: absolute;width: 100%;height: 100%;color: #FFFFFF; text-align: center; line-height: 6vw;	font-size: 1vh;}
-.nav ul li{list-style: none; float:left; width: 20vw; text-align: center;}
-.nav ul{ width: 200vw; height: 10vw;}
-.nav{width: 100vw; height: 10vw;}
+.clicks{display:none;position: relative;left: 92vw;top: -8vw;background-color:#0019cc; width:6vw;height:6vw;border-radius:5vw; line-height: 6vw;	font-size: 1vh;opacity: 0.6;}
+.clicks a{position: absolute;width: 100%;height: 100%;color: #FFFFFF; text-align: center; }
+.nav-list.mui-scroll a.mui-control-item{width:24vw; height: auto; text-align: center;}
+body{background-color: #FFFFFF;}
+.image-ul li{ background-size:100% 100% ;}
+.mui-pull-right.mui-btn-link .clicks_total{display:none;position:absolute;left: 2vw;top: 1vw;background-color:#0019cc; font-size: 1vh;width:5vw;height:5vw;line-height: 5vw;border-radius:2.5vw; opacity: 0.6;}
+.mui-pull-right.mui-btn-link .clicks_total span{position: absolute; left:0;width: 100%;height: 100%;color: #FFFFFF; text-align: center; 	}
