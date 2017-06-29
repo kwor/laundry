@@ -50,20 +50,29 @@
 	    				<input type="search" class="mui-input-clear" placeholder="">
 				</div>
 				<!--导航start-->
-				<div class="nav">
-					<ul>
-						<li>list1</li>
-						<li>list1</li>
-						<li>list1</li>
-						<li>list1</li>
-						<li>list1</li>
-						<li>list1</li>
-						<li>list1</li>
-						<li>list1</li>
-						<li>list1</li>
-						<li>list1</li>
-					</ul>
-				</div>
+						<div class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+    <div class="mui-scroll">
+        <a class="mui-control-item mui-active">
+           list1
+        </a>
+        <a class="mui-control-item">
+            热点
+        </a>
+        <a class="mui-control-item">
+            北京
+        </a>
+        <a class="mui-control-item">
+            社会
+        </a>
+        <a class="mui-control-item">
+            娱乐
+        </a>
+        <a class="mui-control-item">
+            科技
+        </a>
+    </div>
+</div>
+
 				<!--导航end-->
 				<ul>
 					<li  class="mui-card-header mui-card-media clicksnum"  style="height:40vw;background-image:url(images/cbd.jpg);margin-bottom: 2px;">					
