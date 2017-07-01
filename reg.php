@@ -14,6 +14,9 @@
 			.mui-btn {
 				padding: 10px;
 			}
+			.mui-input-row span{position: absolute;left: 3vw;top: 2vw;}
+			.mui-input-row input {position: absolute;left: 7vw; color:#000000;font-family:courier;}
+			input::-webkit-input-placeholder{color:#D8D8D8; font-weight:100; font-size: 2vh;}
 		</style>
 		<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 		<script type="text/javascript">
@@ -43,24 +46,24 @@
 		<div class="mui-content" style="background: #FFFFFF;">
 			<form class="mui-input-group">
 				<div class="mui-input-row">
-					<label>账号</label>
-					<input id='account' type="text" class="mui-input-clear mui-input" placeholder="请输入账号">
+					<span class="mui-icon mui-icon-contact"></span>
+					<input id='account' type="text" class=" mui-input" placeholder="请输入账号">
 				</div>
 				<div class="mui-input-row">
-					<label>密码</label>
-					<input id='password' type="password" class="mui-input-clear mui-input" placeholder="请输入密码">
+					<span class="mui-icon mui-icon-locked"></span>
+					<input id='password' type="password" class=" mui-input" placeholder="请输入密码">
 				</div>
 				<div class="mui-input-row">
-					<label>确认</label>
-					<input id='password_confirm' type="password" class="mui-input-clear mui-input" placeholder="请确认密码">
+					<span class="mui-icon mui-icon-locked"></span>
+					<input id='password_confirm' type="password" class=" mui-input" placeholder="请确认密码">
 				</div>
 				<div class="mui-input-row">
-					<label>邮箱</label>
-					<input id='email' type="email" class="mui-input-clear mui-input" placeholder="请输入邮箱">
+					<span class="mui-icon mui-icon-email"></span>
+					<input id='email' type="email" class=" mui-input" placeholder="请输入邮箱">
 				</div>
 			</form>
 			<div class="mui-content-padded">
-				<button id='reg' class="mui-btn mui-btn-block mui-btn-primary">注册</button>
+				<button id='reg' style="border-radius: 2vw;" class="mui-btn mui-btn-block mui-btn-primary data-loading-text ">注册</button>
 			</div>
 			<div class="mui-content-padded">
 				<p>注册真实可用，注册成功后的用户可用于登录，但是示例程序并未和服务端交互，用户相关数据仅存储于本地。</p>

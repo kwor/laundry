@@ -56,7 +56,7 @@
 				</div>
 				<!--导航start-->
 				<div style="background: #FFFFFF; top:-2vh;" class=" mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted" style="top:-2vh;">
-				    <div class="mui-scroll nav-list" style="color:rgba(152, 150, 150, 0.71);font-size:2vh ;">
+				    <div class="mui-scroll nav-list" style="color:rgba(152, 150, 150, 0.71);font-size:2vh ; font-weight: lighter;">
 				        <a class="mui-control-item mui-active">
 				           list1
 				        </a>
