@@ -35,12 +35,12 @@
 	<body>
 	
 
-	<body>
-		<header class="mui-bar mui-bar-nav">
+	<body style="background: #FFFFFF;">
+		<header class="mui-bar mui-bar-nav" style="background: #FFFFFF;">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title">注册</h1>
 		</header>
-		<div class="mui-content">
+		<div class="mui-content" style="background: #FFFFFF;">
 			<form class="mui-input-group">
 				<div class="mui-input-row">
 					<label>账号</label>

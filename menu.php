@@ -131,6 +131,12 @@
 				margin: 35px auto;
 				display: none;
 			}
+			.mui-table-view-cell>a:not(.mui-btn){
+				margin: -7px 23px;
+			}
+			.mui-table-view.mui-table-view-chevron span.mui-icon{
+				position: absolute;top: 3vw;
+			}
 		</style>
 		<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 		<script type="text/javascript">
@@ -167,7 +173,7 @@
 		<!--单页面开始-->
 		<div id="setting" class="mui-page">
 			<!--页面标题栏开始-->
-			<div class="mui-navbar-inner mui-bar mui-bar-nav">
+			<div class="mui-navbar-inner mui-bar mui-bar-nav" style="background: #FFFFFF;">
 				<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
 					<span class="mui-icon mui-icon-left-nav"></span>
 				</button>
@@ -182,39 +188,50 @@
 					<div class="mui-scroll">
 						<ul class="mui-table-view mui-table-view-chevron">
 							<li class="mui-table-view-cell">
+								<span class="mui-icon mui-icon-contact "></span>
 								<a id="rate" class="mui-navigate-right" href="reg.php">Creat New Account</a>
 							</li>
 							<li class="mui-table-view-cell">
+								<span class="mui-icon mui-icon-locked"></span>
 								<a id="share" class="mui-navigate-right" href="login.php">Sign In</a>
 							</li>
-								<li class="mui-table-view-cell">
+							<li class="mui-table-view-cell">
+								<span class="mui-icon mui-icon-chatbubble"></span>
 								<a id="feedback-btn" href="#feedback" class="mui-navigate-right">Speak wit Us</a>
 							</li>
 							<li class="mui-table-view-cell">
+								<span class="mui-icon mui-icon-spinner-cycle mui-spin"></span>
 								<a id="tel" class="mui-navigate-right">Share and Save</a>
 							</li>
 						
 						</ul>
 						<ul class="mui-table-view mui-table-view-chevron">
 							<li class="mui-table-view-cell">
+								<span class="mui-icon mui-icon-chatboxes"></span>
 								<a href="#lock" class="mui-navigate-right">News and Promotion</a>
 							</li>
 							<li class="mui-table-view-cell">
+								<span class="mui-icon mui-icon-flag"></span>
 								<a href="#lock" class="mui-navigate-right">Tutorial</a>
 							</li>
 							<li class="mui-table-view-cell">
+								<span class="mui-icon mui-icon-help"></span>
 								<a href="#lock" class="mui-navigate-right">FAQ</a>
 							</li>
 							<li class="mui-table-view-cell">
+								<span class="mui-icon mui-icon-paperclip"></span>
 								<a href="#lock" class="mui-navigate-right">like Us on Facebook</a>
 							</li>
 							<li class="mui-table-view-cell">
+								<span class="mui-icon mui-icon-starhalf"></span>
 								<a href="#lock" class="mui-navigate-right">Rate Us in App Store</a>
 							</li>							
 							<li class="mui-table-view-cell">
+								<span class="mui-icon mui-icon-map"></span>
 								<a href="#lock" class="mui-navigate-right">About Us</a>
 							</li>
 							<li class="mui-table-view-cell">
+								<span class="mui-icon mui-icon-email"></span>
 								<a href="contact.php" class="mui-navigate-right">Contact Us</a>
 							</li>
 						</ul>
