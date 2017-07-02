@@ -137,6 +137,9 @@
 			.mui-table-view.mui-table-view-chevron span.mui-icon{
 				position: absolute;top: 3vw;
 			}
+			.mui-input-row input {position: absolute;left: 7vw; color:#000000;font-family:courier;}
+			input::-webkit-input-placeholder,textarea::-webkit-input-placeholder{color:#D8D8D8; font-weight:100; font-size: 2vh;}
+			
 		</style>
 		<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 		<script type="text/javascript">
@@ -177,7 +180,7 @@
 				<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
 					<span class="mui-icon mui-icon-left-nav"></span>
 				</button>
-				<h1 class="mui-center mui-title">设置</h1>
+				<h1 class="mui-center mui-title ">设置</h1>
 			</div>
 			<!--页面标题栏结束-->
 			
@@ -294,28 +297,28 @@
 			</div>
 		</div>
 
-		<div id="feedback" class="mui-page feedback">
-			<div class="mui-navbar-inner mui-bar mui-bar-nav">
-				<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
-					<span class="mui-icon mui-icon-left-nav"></span>设置
+		<div id="feedback" class="mui-page feedback" >
+			<div class="mui-navbar-inner mui-bar mui-bar-nav" style="background-color:#FFFFFF ;">
+				<button style="color:##4cd964" type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+					<span class="mui-icon mui-icon-left-nav"></span>
 				</button>
 				<h1 class="mui-center mui-title">问题反馈</h1>
 			</div>
 			<div class="mui-page-content">
-				<p>问题和意见</p>
+				<p style="color:#000000; font-weight:100; font-size: 2vh;">问题和意见</p>
 				<div class="row mui-input-row">
 					<textarea id='question' class="mui-input-clear question" placeholder="请详细描述你的问题和意见..."></textarea>
 				</div>
-				<p>图片(选填,提供问题截图)</p>
+				<p style="color:#000000; font-weight:100; font-size: 2vh;">图片(选填,提供问题截图)</p>
 				<div id='image-list' class="row image-list">
 				</div>
-				<p>QQ/邮箱</p>
+				<p style="color:#000000; font-weight:100; font-size: 2vh;">QQ/邮箱</p>
 				<div class="mui-input-row">
 					<input id='contact' type="text" class="mui-input-clear  contact" placeholder="(选填,方便我们联系你 )" />
 				</div>
 				<button id='submit' type="button" class="mui-btn mui-btn-green">提交</button>
 			</div>
-			<p>此示例基于环信 “WebIM SDK” + 环信 “移动客服” 实现，在环信 “移动客服面板” 能够查阅反馈信息。</p>
+			<p style="color:#D8D8D8; font-weight:100; font-size: 2vh;">此示例基于环信 “WebIM SDK” + 环信 “移动客服” 实现，在环信 “移动客服面板” 能够查阅反馈信息。</p>
 		</div>
 
 	</body>
