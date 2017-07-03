@@ -17,7 +17,9 @@
 			.mui-btn {
 				padding: 10px;
 			}
-			
+			.text{position: relative;left: 60vw;bottom: -3vh; width: 40vw;  height: 10vh;}
+			.text p{line-height: 4vw;}
+			.click_roude{width: 8vw; height: 8vw;}
 		</style>
 		<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 		<script type="text/javascript">
@@ -82,11 +84,13 @@
 				<ul style="margin-top:-2vh;" class="image-ul">
 					<li  class="mui-card-header mui-card-media clicksnum"  style="height:40vw;background-image:url(images/cbd.jpg);margin-bottom: 1px;">					
 						<div class="price"><a>$222</a></div>
-						<div class="clicks"><a>11</a></div>		
+						<div class="click_roude"><div class="clicks"><a>11</a></div></div>
+						<div class="text"><p style="color: #000000;font-size: 4.5vw;">T-shirt</p><p>Plo,crew or v-neck,long or short sleeves</p></div>		
 					</li>
 		   			<li class="mui-card-header mui-card-media clicksnum" style="height:40vw;background-image:url(images/cbd.jpg);margin-bottom: 1px;">		
 						<div class="price"><a>$222</a></div>
-						<div class="clicks"><a>11</a></div>	
+						<div class="click_roude"><div class="clicks"><a>11</a></div>	</div>
+						<div class="text" style="left: 3vw;"><p style="color: #000000;font-size: 4.5vw;">T-shirt</p><p>Plo,crew or v-neck,long or short sleeves</p></div>
 					</li>
 				</ul>
 			</div>
@@ -99,10 +103,10 @@
 			var i = 0;
 			$('.clicksnum').click(function(){
 				i++;
-				$(this).children('.clicks').show().children('a').html(i);		
+				$(this).children('.click_roude').children('.clicks').show().children('a').html(i);		
 				$('.clicks_total').show().children('span').html(i);
 				//点击图片商品次数变化
-				$(this).children('.clicks').animate({
+				$(this).children('.click_roude').children('.clicks').animate({
 				     width:'8vw',
 				     height:"8vw",
 				     borderRadius:'4vw',
