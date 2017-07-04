@@ -5,8 +5,39 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
 		<title></title>
 		<link href="css/mui.min.css" rel="stylesheet" />
-
-		<style>
+		<link href="css/mui.picker.min.css" rel="stylesheet" />
+		
+<link href="css/style.css" rel="stylesheet" />
+	<style>
+			html,
+			body,
+			.mui-content {
+				height: 0px;
+				margin: 0px;
+				background-color: #efeff4;
+			}
+			h5.mui-content-padded {
+				margin-left: 3px;
+				margin-top: 20px !important;
+			}
+			h5.mui-content-padded:first-child {
+				margin-top: 12px !important;
+			}
+			.mui-btn {
+				font-size: 16px;
+				padding: 8px;
+				margin: 3px;
+			}
+			.ui-alert {
+				text-align: center;
+				padding: 20px 10px;
+				font-size: 16px;
+			}
+			* {
+				-webkit-touch-callout: none;
+				-webkit-user-select: none;
+			}
+		
 ul {
 font-size: 14px;
 color: #8f8f94;
@@ -54,10 +85,11 @@ wx.ready(function() {
 					</select>
 				</div>
 
-				<button id='demo1' style="margin-top:-4vh ;" data-options='{}' class="btn mui-btn mui-btn-block">
+				<button id='data1' style="margin-top:-4vh ;" data-options='{}' class="btn mui-btn mui-btn-block">
 				选择日期时间 ...
 				</button>
-
+                <div id='result' class="ui-alert"></div>
+				
 				<div class="mui-input-row">
 					<span class="mui-icon mui-icon-navigate"></span>
 					<input type="text" class="" placeholder="层数">
@@ -93,9 +125,27 @@ wx.ready(function() {
 
 		</div>
 		<script src="js/mui.min.js"></script>
+		<script src="js/mui.picker.min.js"></script>
 		<script src="js/app.js"></script>
 		<script>(function($, doc) {
 	$.init();
+	
+	
+var dtpicker = new mui.DtPicker({
+    type: "datetime",//设置日历初始视图模式 
+    beginDate: new Date(2015, 04, 25),//设置开始日期 
+    endDate: new Date(2016, 04, 25),//设置结束日期 
+    labels: ['Year', 'Mon', 'Day', 'Hour', 'min'],//设置默认标签区域提示语 
+}) 
+
+document.querySelector('#data1').addEventListener('tap',function () {
+    dtpicker.show(function(e) { 
+        console.log(e); 
+        result.innerText = '日期: ' + e.text;
+    }) 
+})
+
+
 	$.plusReady(function() {
 		var settings = app.getSettings();
 		var regButton = doc.getElementById('reg');
