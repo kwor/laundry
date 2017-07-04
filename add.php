@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html style="background-color: #FFFFFF;" >
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
@@ -52,6 +52,7 @@ padding: 10px;
 .mui-input-row span{position: absolute;left: 3vw;top: 2vw;}
 .mui-input-row input {position: absolute;left: 7vw; color:#000000;font-family:courier;}
 input::-webkit-input-placeholder{color:#D8D8D8; font-weight:100; font-size: 2vh;}
+.mui-btn{margin:auto ; padding-top: 1vw;}
 		</style>
 		<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 		<script type="text/javascript">	//通过config接口注入权限验证配置
@@ -80,28 +81,15 @@ wx.ready(function() {
 		<div class="mui-content" style="background: #FFFFFF;">
 
 			<form class="mui-input-group" >
-
-			<!--	<div class="mui-table-view-cell">
-
- 					<select  style="width:100%; "  dir="rtl" id="dz">
-						<option value="1">地区</option>
-						<option value="2">澳门</option>
-						<option value="3">香港</option>
-						<option value="4">台湾</option>
-					</select>
+				<div class="mui-input-row">
+					<span class="mui-icon mui-icon-location"></span>
+					<input id='showUserPicker' type="text" class="" placeholder="选择地区">
 				</div>
-			-->
-	            <button id='showUserPicker' class="mui-btn mui-btn-block" type='button' >选择地区 ...</button>
-				
-
                 <div id="allmap" style="height: 200px;"></div>
-                <div></div>
-
-				<button id='data1' style="margin-top:-4vh ;" data-options='{}' class="btn mui-btn mui-btn-block">
-				选择日期时间 ...
-				</button>
-                <div id='result' class="ui-alert"></div>
-				
+                <div class="mui-input-row">
+                		<span class="mui-icon mui-icon-compose"></span>
+	                	<input id='data1' style="left: 10vw; top: 2vw; width:100vw" placeholder="选择日期时间"  data-options='{}' class="" ／>	
+                </div>
 				<div class="mui-input-row">
 					<span class="mui-icon mui-icon-navigate"></span>
 					<input type="text" class="" placeholder="层数">
@@ -122,14 +110,11 @@ wx.ready(function() {
 					<input type="text" class="" placeholder="上门收取及送递指示">
 				</div>
 
-				<div class="mui-input-row">
-					<span class="mui-icon mui-icon-location"></span>
-					<input type="text" class="" placeholder="地区">
-				</div>
+				
 
 			</form>
 
-			<div class="mui-content-padded">
+			<div class="mui-content-padded" style="background-color: #efeff4;">
 				<button id='reg' style="border-radius: 2vw;" class="mui-btn mui-btn-block mui-btn-primary">
 				提交
 				</button>
@@ -176,7 +161,7 @@ var dtpicker = new mui.DtPicker({
 document.querySelector('#data1').addEventListener('tap',function () {
     dtpicker.show(function(e) { 
         console.log(e); 
-        result.innerText = '日期: ' + e.text;
+        data1.value = e.text;
     }) 
 })
 
