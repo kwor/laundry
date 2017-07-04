@@ -6,8 +6,8 @@
 		<title></title>
 		<link href="css/mui.min.css" rel="stylesheet" />
 		<link href="css/mui.picker.min.css" rel="stylesheet" />
-		
-<link href="css/style.css" rel="stylesheet" />
+		<link href="../css/mui.picker.css" rel="stylesheet" />
+		<link href="../css/mui.poppicker.css" rel="stylesheet" />
 	<style>
 			html,
 			body,
@@ -74,16 +74,21 @@ wx.ready(function() {
 
 			<form class="mui-input-group" >
 
-				<div class="mui-table-view-cell">
+			<!--	<div class="mui-table-view-cell">
 
-					<!--<input id='LX' class="mui-input-clear required" type="text" jschange ng-model="goods.LX" placeholder="必填" />-->
-					<select  style="width:100%; "  dir="rtl" id="dz">
+ 					<select  style="width:100%; "  dir="rtl" id="dz">
 						<option value="1">地区</option>
 						<option value="2">澳门</option>
 						<option value="3">香港</option>
 						<option value="4">台湾</option>
 					</select>
 				</div>
+			-->
+	            <button id='showUserPicker' class="mui-btn mui-btn-block" type='button'>选择地区 ...</button>
+				<div id='userResult' class="ui-alert"></div>
+
+
+
 
 				<button id='data1' style="margin-top:-4vh ;" data-options='{}' class="btn mui-btn mui-btn-block">
 				选择日期时间 ...
@@ -126,6 +131,10 @@ wx.ready(function() {
 		</div>
 		<script src="js/mui.min.js"></script>
 		<script src="js/mui.picker.min.js"></script>
+		<script src="../js/mui.picker.js"></script>
+		<script src="../js/mui.poppicker.js"></script>
+		<script src="../js/city.data.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/city.data-3.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/app.js"></script>
 		<script>(function($, doc) {
 	$.init();
@@ -145,6 +154,33 @@ document.querySelector('#data1').addEventListener('tap',function () {
     }) 
 })
 
+
+	$.ready(function() {
+					//普通示例
+					var userPicker = new $.PopPicker();
+					userPicker.setData([{
+						value: 'hk',
+						text: '香港'
+					}, {
+						value: 'tw',
+						text: '台湾'
+					}, {
+						value: 'ma',
+						text: '澳门'
+					}]);
+					var showUserPickerButton = doc.getElementById('showUserPicker');
+					var userResult = doc.getElementById('userResult');
+					showUserPickerButton.addEventListener('tap', function(event) {
+						userPicker.show(function(items) {
+							userResult.innerText = JSON.stringify(items[0]);
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
+		 
+		 
+			 
+			})(mui, document);
 
 	$.plusReady(function() {
 		var settings = app.getSettings();
