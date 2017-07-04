@@ -60,22 +60,22 @@
 				<div style="background: #FFFFFF; top:-2vh;" class=" mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted" style="top:-2vh;">
 				    <div class="mui-scroll nav-list" style="color:rgba(152, 150, 150, 0.71);font-size:2vh ; font-weight: lighter;">
 				        <a class="mui-control-item mui-active">
-				           list1
+				           Special
 				        </a>
 				        <a class="mui-control-item">
-				            热点
+				            Shirts/Tops
 				        </a>
 				        <a class="mui-control-item">
-				            北京
+				            Wash/Fold
 				        </a>
 				        <a class="mui-control-item">
-				            社会
+				            Suits
 				        </a>
 				        <a class="mui-control-item">
-				            娱乐
+				            Ladies Wear
 				        </a>
 				        <a class="mui-control-item">
-				            科技
+				            Outerwear
 				        </a>
 				    </div>
 				</div>
