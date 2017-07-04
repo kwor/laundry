@@ -18,7 +18,7 @@
 				padding: 10px;
 			}
 			.text{position: relative;left: 60vw;bottom: -3vh; width: 40vw;  height: 10vh;}
-			.text p{line-height: 4vw;}
+			.text p{line-height: 4vw; color:#eee; text-shadow: 5px 5px 5px #000000;}
 			.click_roude{width: 8vw; height: 8vw;}
 		</style>
 		<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
@@ -85,12 +85,12 @@
 					<li  class="mui-card-header mui-card-media clicksnum"  style="height:40vw;background-image:url(images/cbd.jpg);margin-bottom: 1px;">					
 						<div class="price"><a>$222</a></div>
 						<div class="click_roude"><div class="clicks"><a>11</a></div></div>
-						<div class="text"><p style="color: #000000;font-size: 4.5vw;">T-shirt</p><p>Plo,crew or v-neck,long or short sleeves</p></div>		
+						<div class="text"><p style="color: #b1a4a4;font-size: 4.5vw;">T-shirt</p><p>Plo,crew or v-neck,long or short sleeves</p></div>		
 					</li>
 		   			<li class="mui-card-header mui-card-media clicksnum" style="height:40vw;background-image:url(images/cbd.jpg);margin-bottom: 1px;">		
 						<div class="price"><a>$222</a></div>
 						<div class="click_roude"><div class="clicks"><a>11</a></div>	</div>
-						<div class="text" style="left: 3vw;"><p style="color: #000000;font-size: 4.5vw;">T-shirt</p><p>Plo,crew or v-neck,long or short sleeves</p></div>
+						<div class="text" style="left: 3vw;"><p style="color: #b1a4a4;font-size: 4.5vw;">T-shirt</p><p>Plo,crew or v-neck,long or short sleeves</p></div>
 					</li>
 				</ul>
 			</div>
