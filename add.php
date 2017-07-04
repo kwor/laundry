@@ -6,8 +6,12 @@
 		<title></title>
 		<link href="css/mui.min.css" rel="stylesheet" />
 		<link href="css/mui.picker.min.css" rel="stylesheet" />
-		<link href="../css/mui.picker.css" rel="stylesheet" />
-		<link href="../css/mui.poppicker.css" rel="stylesheet" />
+	<style type="text/css">
+		body, html {width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
+		#allmap{width:100%;height:500px;}
+		p{margin-left:5px; font-size:14px;}
+	</style>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZdDvmajgCuN4lLrvdccyHXiEGGDAY1iV"></script>
 	<style>
 			html,
 			body,
@@ -70,6 +74,9 @@ wx.ready(function() {
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title">洗衣篮</h1>
 		</header>
+		
+		
+		
 		<div class="mui-content" style="background: #FFFFFF;">
 
 			<form class="mui-input-group" >
@@ -84,11 +91,11 @@ wx.ready(function() {
 					</select>
 				</div>
 			-->
-	            <button id='showUserPicker' class="mui-btn mui-btn-block" type='button'>选择地区 ...</button>
-				<div id='userResult' class="ui-alert"></div>
+	            <button id='showUserPicker' class="mui-btn mui-btn-block" type='button' >选择地区 ...</button>
+				
 
-
-
+                <div id="allmap" style="height: 200px;"></div>
+                <div></div>
 
 				<button id='data1' style="margin-top:-4vh ;" data-options='{}' class="btn mui-btn mui-btn-block">
 				选择日期时间 ...
@@ -136,7 +143,26 @@ wx.ready(function() {
 		<script src="../js/city.data.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/city.data-3.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/app.js"></script>
-		<script>(function($, doc) {
+		
+	<script type="text/javascript">
+	// 百度地图API功能
+	var map = new BMap.Map("allmap");
+	//var point = new BMap.Point(116.331398,39.897445);
+	map.centerAndZoom("澳门",11);  
+
+	function theLocation(city){
+		//var city = document.getElementById("userResult").value;
+		if(city != ""){
+			map.centerAndZoom(city,11);      // 用城市名设置地图中心点
+		}else{
+			map.centerAndZoom("澳门",11);   
+		}
+	}
+</script>
+
+
+
+<script>(function($, doc) {
 	$.init();
 	
 	
@@ -159,20 +185,21 @@ document.querySelector('#data1').addEventListener('tap',function () {
 					//普通示例
 					var userPicker = new $.PopPicker();
 					userPicker.setData([{
-						value: 'hk',
+						value: '香港',
 						text: '香港'
 					}, {
-						value: 'tw',
-						text: '台湾'
+						value: '上海',
+						text: '上海'
 					}, {
-						value: 'ma',
+						value: '澳门',
 						text: '澳门'
 					}]);
 					var showUserPickerButton = doc.getElementById('showUserPicker');
 					var userResult = doc.getElementById('userResult');
 					showUserPickerButton.addEventListener('tap', function(event) {
 						userPicker.show(function(items) {
-							userResult.innerText = JSON.stringify(items[0].value);
+							//userResult.innerText = JSON.stringify(items[0].value);
+							theLocation(items[0].value);
 							//返回 false 可以阻止选择框的关闭
 							//return false;
 						});
