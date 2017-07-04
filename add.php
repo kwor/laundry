@@ -141,10 +141,10 @@ wx.ready(function() {
 	
 	
 var dtpicker = new mui.DtPicker({
-    type: "datetime",//设置日历初始视图模式 
+    type: "date",//设置日历初始视图模式 
     beginDate: new Date(2015, 04, 25),//设置开始日期 
     endDate: new Date(2016, 04, 25),//设置结束日期 
-    labels: ['Year', 'Mon', 'Day', 'Hour', 'min'],//设置默认标签区域提示语 
+    labels: ['Year', 'Mon', 'Day'],//设置默认标签区域提示语 
 }) 
 
 document.querySelector('#data1').addEventListener('tap',function () {
@@ -172,7 +172,7 @@ document.querySelector('#data1').addEventListener('tap',function () {
 					var userResult = doc.getElementById('userResult');
 					showUserPickerButton.addEventListener('tap', function(event) {
 						userPicker.show(function(items) {
-							userResult.innerText = JSON.stringify(items[0]);
+							userResult.innerText = JSON.stringify(items[0].value);
 							//返回 false 可以阻止选择框的关闭
 							//return false;
 						});
