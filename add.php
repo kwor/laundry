@@ -83,7 +83,7 @@ wx.ready(function() {
 			<form class="mui-input-group" >
 				<div class="mui-input-row">
 					<span class="mui-icon mui-icon-location"></span>
-					<input id='showUserPicker' type="text" class="" placeholder="选择地区">
+					<input id='showCityPicker' type="text" class="" placeholder="选择地区">
 				</div>
                 <div id="allmap" style="height: 200px;"></div>
                 <div class="mui-input-row">
@@ -123,24 +123,19 @@ wx.ready(function() {
 		</div>
 		<script src="js/mui.min.js"></script>
 		<script src="js/mui.picker.min.js"></script>
-		<script src="../js/mui.picker.js"></script>
-		<script src="../js/mui.poppicker.js"></script>
-		<script src="../js/city.data.js" type="text/javascript" charset="utf-8"></script>
-		<script src="../js/city.data-3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/city.mo.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/app.js"></script>
 		
 	<script type="text/javascript">
 	// 百度地图API功能
 	var map = new BMap.Map("allmap");
 	//var point = new BMap.Point(116.331398,39.897445);
-	map.centerAndZoom("澳门",11);  
+	map.centerAndZoom("澳门",10);  
 
 	function theLocation(city){
 		//var city = document.getElementById("userResult").value;
 		if(city != ""){
-			map.centerAndZoom(city,11);      // 用城市名设置地图中心点
-		}else{
-			map.centerAndZoom("澳门",11);   
+			map.centerAndZoom(city,13);      // 用城市名设置地图中心点
 		}
 	}
 </script>
@@ -168,23 +163,17 @@ document.querySelector('#data1').addEventListener('tap',function () {
 
 	$.ready(function() {
 					//普通示例
-					var userPicker = new $.PopPicker();
-					userPicker.setData([{
-						value: '香港',
-						text: '香港'
-					}, {
-						value: '上海',
-						text: '上海'
-					}, {
-						value: '澳门',
-						text: '澳门'
-					}]);
-					var showUserPickerButton = doc.getElementById('showUserPicker');
-					var userResult = doc.getElementById('userResult');
-					showUserPickerButton.addEventListener('tap', function(event) {
-						userPicker.show(function(items) {
-							//userResult.innerText = JSON.stringify(items[0].value);
-							theLocation(items[0].value);
+					var cityPicker = new $.PopPicker({
+						layer: 2
+					});
+					cityPicker.setData(mcityData);
+					var showCityPickerButton = doc.getElementById('showCityPicker');
+				//	var cityResult = doc.getElementById('cityResult');
+					showCityPickerButton.addEventListener('tap', function(event) {
+						cityPicker.show(function(items) {
+						//	cityResult.innerText = "你选择的城市是:" + items[0].text + " " + items[1].text;
+							//console.log(items[0].text + " " + items[1].text);
+							theLocation(items[1].text);
 							//返回 false 可以阻止选择框的关闭
 							//return false;
 						});
