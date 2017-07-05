@@ -5,8 +5,8 @@ var mcityData = [{
 		value: "花地玛堂区",
 		text: "花地玛堂区"
 	}, {
-		value: "圣安多尼堂区",
-		text: "圣安多尼堂区"
+		value: "花王堂区",
+		text: "花王堂区"
 	}, {
 		value: "大堂区",
 		text: "大堂区"

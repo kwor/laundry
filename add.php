@@ -135,7 +135,7 @@ wx.ready(function() {
 	function theLocation(city){
 		//var city = document.getElementById("userResult").value;
 		if(city != ""){
-			map.centerAndZoom(city,13);      // 用城市名设置地图中心点
+			map.centerAndZoom(city,14);      // 用城市名设置地图中心点
 		}
 	}
 </script>
