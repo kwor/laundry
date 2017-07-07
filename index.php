@@ -39,13 +39,15 @@
 		</script>
 	</head>
 	<body>
-		<header class="mui-bar mui-bar-nav" style="padding-right: 15px;">
+		<header class="mui-bar mui-bar-nav" style="padding-right: 15px;background: #ffffff;">
 			<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left"  >
 				<a class="mui-icon mui-icon-bars" href="menu.php"></a>
 			</button>	
-			<h1 class="mui-title">impressed</h1>
+			<h1 class="mui-title" >Neighborhood Express</h1>
 			<button id='setting' class=" mui-pull-right mui-btn-link " >
-				<a class="mui-icon mui-icon-trash" href="add.php"></a>
+				<a href="add.php">
+					<img src="images/shopcart.jpg" style="width: 8vw;height: 8vw;position: absolute;right: -1vw;top: 1.5vw;" />
+				</a>
 				<div class="clicks_total">
 					<span>11</span>
 				</div>
@@ -82,12 +84,12 @@
 
 				<!--导航end-->
 				<ul style="margin-top:-2vh;" class="image-ul">
-					<li  class="mui-card-header mui-card-media clicksnum"  style="height:40vw;background-image:url(images/cbd.jpg);margin-bottom: 1px;">					
+					<li   class="mui-card-header mui-card-media clicksnum"  style="height:40vw;background-image:url(img/clothes1.jpg);margin-bottom: 1px;">					
 						<div class="price"><a>$222</a></div>
 						<div class="click_roude"><div class="clicks"><a>11</a></div></div>
 						<div class="text"><p style="color: #b1a4a4;font-size: 4.5vw;">T-shirt</p><p>Plo,crew or v-neck,long or short sleeves</p></div>		
 					</li>
-		   			<li class="mui-card-header mui-card-media clicksnum" style="height:40vw;background-image:url(images/cbd.jpg);margin-bottom: 1px;">		
+		   			<li class="mui-card-header mui-card-media clicksnum" style="height:40vw;background-image:url(img/clothes2.jpg);margin-bottom: 1px;">		
 						<div class="price"><a>$222</a></div>
 						<div class="click_roude"><div class="clicks"><a>11</a></div>	</div>
 						<div class="text" style="left: 3vw;"><p style="color: #b1a4a4;font-size: 4.5vw;">T-shirt</p><p>Plo,crew or v-neck,long or short sleeves</p></div>

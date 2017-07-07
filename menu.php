@@ -180,7 +180,7 @@
 				<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
 					<span class="mui-icon mui-icon-left-nav"></span>
 				</button>
-				<h1 class="mui-center mui-title ">设置</h1>
+				<h1 class="mui-center mui-title ">設置</h1>
 			</div>
 			<!--页面标题栏结束-->
 			
@@ -260,13 +260,13 @@
 					<div class="mui-scroll">
 						<ul class="mui-table-view mui-table-view-radio">
 							<li class="mui-table-view-cell">
-								<a class="mui-navigate-right">开启</a>
+								<a class="mui-navigate-right">開啟</a>
 							</li>
 							<li class="mui-table-view-cell">
-								<a class="mui-navigate-right">只在夜间开启</a>
+								<a class="mui-navigate-right">只在夜間開啟</a>
 							</li>
 							<li class="mui-table-view-cell">
-								<a class="mui-navigate-right">关闭</a>
+								<a class="mui-navigate-right">關閉</a>
 							</li>
 						</ul>
 					</div>
@@ -277,15 +277,15 @@
 		<div id="lock" class="mui-page">
 			<div class="mui-navbar-inner mui-bar mui-bar-nav">
 				<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
-					<span class="mui-icon mui-icon-left-nav"></span>设置
+					<span class="mui-icon mui-icon-left-nav"></span>設置
 				</button>
-				<h1 class="mui-center mui-title">锁屏图案</h1>
+				<h1 class="mui-center mui-title">鎖屏圖案</h1>
 			</div>
 			<div class="mui-page-content">
 				<div class="mui-content-padded">
 					<ul class="mui-table-view mui-table-view-chevron">
 						<li class="mui-table-view-cell">
-							使用手势解锁
+							使用手勢解鎖
 							<div id="lockState" class="mui-switch">
 								<div class="mui-switch-handle"></div>
 							</div>
@@ -302,23 +302,23 @@
 				<button style="color:##4cd964" type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
 					<span class="mui-icon mui-icon-left-nav"></span>
 				</button>
-				<h1 class="mui-center mui-title">问题反馈</h1>
+				<h1 class="mui-center mui-title">問題反饋</h1>
 			</div>
 			<div class="mui-page-content">
-				<p style="color:#000000; font-weight:100; font-size: 2vh;">问题和意见</p>
+				<p style="color:#000000; font-weight:100; font-size: 2vh;">問題和意見</p>
 				<div class="row mui-input-row">
 					<textarea id='question' class="mui-input-clear question" placeholder="请详细描述你的问题和意见..."></textarea>
 				</div>
-				<p style="color:#000000; font-weight:100; font-size: 2vh;">图片(选填,提供问题截图)</p>
+				<p style="color:#000000; font-weight:100; font-size: 2vh;">圖片(選填,提供問題截圖)</p>
 				<div id='image-list' class="row image-list">
 				</div>
-				<p style="color:#000000; font-weight:100; font-size: 2vh;">QQ/邮箱</p>
+				<p style="color:#000000; font-weight:100; font-size: 2vh;">QQ/郵箱</p>
 				<div class="mui-input-row">
 					<input id='contact' type="text" class="mui-input-clear  contact" placeholder="(选填,方便我们联系你 )" />
 				</div>
 				<button id='submit' type="button" class="mui-btn mui-btn-green">提交</button>
 			</div>
-			<p style="color:#D8D8D8; font-weight:100; font-size: 2vh;">此示例基于环信 “WebIM SDK” + 环信 “移动客服” 实现，在环信 “移动客服面板” 能够查阅反馈信息。</p>
+			<p style="color:#D8D8D8; font-weight:100; font-size: 2vh;">此實例基於環信 “WebIM SDK” + 環信 “移動客服” 實現，在環信 “移動客服面板” 能夠查閱反饋信息。</p>
 		</div>
 
 	</body>

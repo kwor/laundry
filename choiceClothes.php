@@ -31,7 +31,7 @@
 	</head>
 	<body style="background-color: #FFFFFF;">
 		<div style="width: 100%; height: 30%;" class="mui-slider-item">
-			<img style="width: 100%; height: auto;" src="images/cbd.jpg" />
+			<img style="width: 100%; height: auto;" src="img/clothes3.jpg" />
 			<span style="position: absolute; left:5vw; top:5vw; color: #FFFFFF;"  class="mui-icon mui-icon-back"></span>
 		</div>
 		<div class="mui-content" style="background-color: #FFFFFF; padding-bottom: 12vw;">

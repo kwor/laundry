@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
-		<title>注册</title>
+		<title>註冊</title>
 		<link href="css/mui.min.css" rel="stylesheet" />
 	 
 	<style>
@@ -41,32 +41,32 @@
 	<body style="background: #FFFFFF;">
 		<header class="mui-bar mui-bar-nav" style="background: #FFFFFF;">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-			<h1 class="mui-title">注册</h1>
+			<h1 class="mui-title">註冊</h1>
 		</header>
 		<div class="mui-content" style="background: #FFFFFF;">
 			<form class="mui-input-group">
 				<div class="mui-input-row">
 					<span class="mui-icon mui-icon-contact"></span>
-					<input id='account' type="text" class=" mui-input" placeholder="请输入账号">
+					<input id='account' type="text" class=" mui-input" placeholder="請輸入帳號">
 				</div>
 				<div class="mui-input-row">
 					<span class="mui-icon mui-icon-locked"></span>
-					<input id='password' type="password" class=" mui-input" placeholder="请输入密码">
+					<input id='password' type="password" class=" mui-input" placeholder="請輸入密碼">
 				</div>
 				<div class="mui-input-row">
 					<span class="mui-icon mui-icon-locked"></span>
-					<input id='password_confirm' type="password" class=" mui-input" placeholder="请确认密码">
+					<input id='password_confirm' type="password" class=" mui-input" placeholder="請再次輸入密碼">
 				</div>
 				<div class="mui-input-row">
 					<span class="mui-icon mui-icon-email"></span>
-					<input id='email' type="email" class=" mui-input" placeholder="请输入邮箱">
+					<input id='email' type="email" class=" mui-input" placeholder="請輸入郵箱">
 				</div>
 			</form>
 			<div class="mui-content-padded">
-				<button id='reg' style="border-radius: 2vw;" class="mui-btn mui-btn-block mui-btn-primary data-loading-text ">注册</button>
+				<button id='reg' style="border-radius: 2vw;" class="mui-btn mui-btn-block mui-btn-primary data-loading-text ">註冊</button>
 			</div>
 			<div class="mui-content-padded">
-				<p>注册真实可用，注册成功后的用户可用于登录，但是示例程序并未和服务端交互，用户相关数据仅存储于本地。</p>
+				<p>註冊真實可用，註冊成功後的用戶可用於登陸，但是實例程序並未和服務端交互，用戶相關數據僅存處與本地。</p>
 			</div>
 		</div>
 		<script src="js/mui.min.js"></script>

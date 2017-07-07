@@ -73,7 +73,7 @@ wx.ready(function() {
 	<body style="background: #FFFFFF;">
 		<header class="mui-bar mui-bar-nav" style="background: #FFFFFF;">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-			<h1 class="mui-title">洗衣篮</h1>
+			<h1 class="mui-title">洗衣籃</h1>
 		</header>
 		
 		
@@ -130,7 +130,7 @@ wx.ready(function() {
 	// 百度地图API功能
 	var map = new BMap.Map("allmap");
 	//var point = new BMap.Point(116.331398,39.897445);
-	map.centerAndZoom("澳门",10);  
+	map.centerAndZoom("澳門",10);  
 
 	function theLocation(city){
 		//var city = document.getElementById("userResult").value;
@@ -198,7 +198,7 @@ document.querySelector('#data1').addEventListener('tap',function () {
 			};
 			var passwordConfirm = passwordConfirmBox.value;
 			if(passwordConfirm != regInfo.password) {
-				plus.nativeUI.toast('密码两次输入不一致');
+				plus.nativeUI.toast('密碼兩次輸入不一致');
 				return;
 			}
 			app.reg(regInfo, function(err) {
@@ -206,7 +206,7 @@ document.querySelector('#data1').addEventListener('tap',function () {
 					plus.nativeUI.toast(err);
 					return;
 				}
-				plus.nativeUI.toast('注册成功');
+				plus.nativeUI.toast('註冊成功');
 				/*
 				 * 注意：
 				 * 1、因本示例应用启动页就是登录页面，因此注册成功后，直接显示登录页即可；
