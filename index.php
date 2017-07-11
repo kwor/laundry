@@ -46,7 +46,7 @@
 			<h1 class="mui-title" >Neighborhood Express</h1>
 			<button id='setting' class=" mui-pull-right mui-btn-link " >
 				<a href="add.php">
-					<img src="images/shopcart.jpg" style="width: 8vw;height: 8vw;position: absolute;right: -1vw;top: 1.5vw;" />
+					<img src="images/shopcart.jpg" style="width: 6vw;height: 6vw;position: absolute;right: -1vw;top: 2.5vw;" />
 				</a>
 				<div class="clicks_total">
 					<span>11</span>
