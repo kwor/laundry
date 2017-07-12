@@ -159,7 +159,7 @@ var dtpicker = new mui.DtPicker({
     type: "hour",//设置日历初始视图模式 
     beginDate: new Date(2015, 04, 25),//设置开始日期 
     endDate: new Date(2016, 04, 25),//设置结束日期 
-    labels: ['Year', 'Mon', 'Day', 'Hour'],//设置默认标签区域提示语 
+    labels: ['年', '月', '日', '时'],//设置默认标签区域提示语 
  
 }) 
 
