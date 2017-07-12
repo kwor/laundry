@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+require_once("dbconn.php");
+?>
 <html style="background-color: #FFFFFF;" >
 	<head>
 		<meta charset="utf-8">
@@ -86,10 +89,7 @@ wx.ready(function() {
 					<input id='showCityPicker' type="text" class="" placeholder="选择地区">
 				</div>
                 <div id="allmap" style="height: 200px;"></div>
-                <div class="mui-input-row">
-                		<span class="mui-icon mui-icon-compose"></span>
-	                	<input id='data1' style="left: 10vw; top: 2vw; width:100vw" placeholder="选择日期时间"  data-options='{}' class="" ／>	
-                </div>
+            
 				<div class="mui-input-row">
 					<span class="mui-icon mui-icon-navigate"></span>
 					<input type="text" class="" placeholder="层数">
@@ -110,7 +110,16 @@ wx.ready(function() {
 					<input type="text" class="" placeholder="上门收取及送递指示">
 				</div>
 
-				
+				<div class="mui-input-row">
+                		<span class="mui-icon mui-icon-compose"></span>
+	                	<input id='data1' style="left: 10vw; top: 2vw; width:100vw" placeholder="取貨時間"  data-options='{}' class="" ／>	
+                </div>
+                
+                <div class="mui-input-row">
+					<span class="mui-icon mui-icon-location"></span>
+					<input id='isquick' type="text" class="" placeholder="是否加急">
+					<input type="hidden" name="isq" value="0" />
+				</div>
 
 			</form>
 
@@ -147,10 +156,11 @@ wx.ready(function() {
 	
 	
 var dtpicker = new mui.DtPicker({
-    type: "date",//设置日历初始视图模式 
+    type: "hour",//设置日历初始视图模式 
     beginDate: new Date(2015, 04, 25),//设置开始日期 
     endDate: new Date(2016, 04, 25),//设置结束日期 
-    labels: ['Year', 'Mon', 'Day'],//设置默认标签区域提示语 
+    labels: ['Year', 'Mon', 'Day', 'Hour'],//设置默认标签区域提示语 
+ 
 }) 
 
 document.querySelector('#data1').addEventListener('tap',function () {
@@ -159,8 +169,7 @@ document.querySelector('#data1').addEventListener('tap',function () {
         data1.value = e.text;
     }) 
 })
-
-
+ 
 	$.ready(function() {
 					//普通示例
 					var cityPicker = new $.PopPicker({
@@ -179,7 +188,25 @@ document.querySelector('#data1').addEventListener('tap',function () {
 						});
 					}, false);
 		 
-		 
+		 	 var userPicker = new $.PopPicker();
+					userPicker.setData([{
+						value: '0',
+						text: '普通-48小时'
+					}, {
+						value: '1',
+						text: '加快-24小时(50%服务费)'
+					}]);
+					var showUserPickerButton = doc.getElementById('isquick');
+					//var userResult = doc.getElementById('isquick');
+					showUserPickerButton.addEventListener('tap', function(event) {
+						userPicker.show(function(items) {
+							
+							  isquick.value = items[0].text;
+							  
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
 			 
 			})(mui, document);
 
