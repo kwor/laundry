@@ -18,22 +18,6 @@
 			.mui-input-row input {position: absolute;left: 7vw; color:#000000;font-family:courier;}
 			input::-webkit-input-placeholder{color:#D8D8D8; font-weight:100; font-size: 2vh;}
 		</style>
-		<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-		<script type="text/javascript">
-			//通过config接口注入权限验证配置
-			wx.config({
-			    debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-			    appId: '', // 必填，公众号的唯一标识
-			    timestamp: '<?php echo time();?>', // 必填，生成签名的时间戳
-			    nonceStr: '<?php echo $nonceStr;?>', // 必填，生成签名的随机串
-			    signature: '<?php echo $signature;?>',// 必填，签名
-			    jsApiList: [] // 必填，需要使用的JS接口列表
-			});
-			//通过ready接口处理成功验证
-			wx.ready(function(){
-				// config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后
-			});
-		</script>
 	</head>
 	<body>
 	
@@ -44,80 +28,56 @@
 			<h1 class="mui-title">註冊</h1>
 		</header>
 		<div class="mui-content" style="background: #FFFFFF;">
-			<form class="mui-input-group">
+			<form class="mui-input-group" action="php/reg.php" method="post">
 				<div class="mui-input-row">
 					<span class="mui-icon mui-icon-contact"></span>
-					<input id='account' type="text" class=" mui-input" placeholder="請輸入帳號">
+					<input id='account' name="name" type="text" class=" mui-input" placeholder="請輸入姓名">
 				</div>
 				<div class="mui-input-row">
 					<span class="mui-icon mui-icon-locked"></span>
-					<input id='password' type="password" class=" mui-input" placeholder="請輸入密碼">
+					<input id='password' type="password" name="pass" class=" mui-input" placeholder="請輸入密碼">
 				</div>
 				<div class="mui-input-row">
 					<span class="mui-icon mui-icon-locked"></span>
-					<input id='password_confirm' type="password" class=" mui-input" placeholder="請再次輸入密碼">
+					<input id='password_confirm' type="password" name="repass" class=" mui-input" placeholder="請再次輸入密碼">
 				</div>
 				<div class="mui-input-row">
 					<span class="mui-icon mui-icon-email"></span>
-					<input id='email' type="email" class=" mui-input" placeholder="請輸入郵箱">
+					<input id='email' type="email" name="email" class=" mui-input" placeholder="請輸入郵箱">
 				</div>
+                <div class="mui-content-padded">
+                    <a id='reg' style="border-radius: 2vw;" class="mui-btn mui-btn-block mui-btn-primary data-loading-text ">註冊</a>
+                </div>
 			</form>
-			<div class="mui-content-padded">
-				<button id='reg' style="border-radius: 2vw;" class="mui-btn mui-btn-block mui-btn-primary data-loading-text ">註冊</button>
-			</div>
-			<div class="mui-content-padded">
-				<p>註冊真實可用，註冊成功後的用戶可用於登陸，但是實例程序並未和服務端交互，用戶相關數據僅存處與本地。</p>
+
+			<div id="msg" class="mui-content-padded">
+				<p style="text-align: center ;color:red;"></p>
 			</div>
 		</div>
 		<script src="js/mui.min.js"></script>
 		<script src="js/app.js"></script>
-		<script>
-			(function($, doc) {
-				$.init();
-				$.plusReady(function() {
-					var settings = app.getSettings();
-					var regButton = doc.getElementById('reg');
-					var accountBox = doc.getElementById('account');
-					var passwordBox = doc.getElementById('password');
-					var passwordConfirmBox = doc.getElementById('password_confirm');
-					var emailBox = doc.getElementById('email');
-					regButton.addEventListener('tap', function(event) {
-						var regInfo = {
-							account: accountBox.value,
-							password: passwordBox.value,
-							email: emailBox.value
-						};
-						var passwordConfirm = passwordConfirmBox.value;
-						if (passwordConfirm != regInfo.password) {
-							plus.nativeUI.toast('密码两次输入不一致');
-							return;
-						}
-						app.reg(regInfo, function(err) {
-							if (err) {
-								plus.nativeUI.toast(err);
-								return;
-							}
-							plus.nativeUI.toast('注册成功');
-							/*
-							 * 注意：
-							 * 1、因本示例应用启动页就是登录页面，因此注册成功后，直接显示登录页即可；
-							 * 2、如果真实案例中，启动页不是登录页，则需修改，使用mui.openWindow打开真实的登录页面
-							 */
-							plus.webview.getLaunchWebview().show("pop-in",200,function () {
-								plus.webview.currentWebview().close("none");
-							});
-							//若启动页不是登录页，则需通过如下方式打开登录页
-//							$.openWindow({
-//								url: 'login.html',
-//								id: 'login',
-//								show: {
-//									aniShow: 'pop-in'
-//								}
-//							});
-						});
-					});
-				});
-			}(mui, document));
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script>
+            $('#reg').click(function () {
+                var data = $('form').serialize();
+                $.ajax({
+                    url:'php/reg.php',
+                    datatype:'json',
+                    type:'post',
+                    data:data,
+                    success:function (msg) {
+                        var msg = JSON.parse(msg)
+                        $('#msg p').text(msg[0].msg);
+                        if(msg[0].code==200){
+                            setTimeout(function () {
+                                location.href="login.php";
+                            }, 1000);
+                        }
+
+                    }
+                })
+            })
+
 		</script>
 	</body>
 

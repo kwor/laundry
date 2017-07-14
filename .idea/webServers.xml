@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="82def133-d14d-41d2-aec1-d9d1bed5fd7f" name="laundry" url="http://192.168.1.128">
+        <fileTransfer host="192.168.1.128" port="22" rootFolder="/home/wwwroot/design-mx/" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
