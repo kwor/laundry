@@ -144,7 +144,7 @@
                         $('#msg p').text(msg[0].msg);
                         if(msg[0].code==200){
                             setTimeout(function () {
-                                location.href="index.php";
+                                location.href="kuser.php";
                             }, 1000);
                         }
                     }

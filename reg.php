@@ -68,7 +68,7 @@
                     success:function (msg) {
                         var msg = JSON.parse(msg)
                         $('#msg p').text(msg[0].msg);
-                        if(msg[0].code==200){
+                        if(msg[0].msg){
                             setTimeout(function () {
                                 location.href="login.php";
                             }, 1000);
