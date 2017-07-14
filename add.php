@@ -118,7 +118,15 @@ wx.ready(function() {
                 <div class="mui-input-row">
 					<span class="mui-icon mui-icon-location"></span>
 					<input id='isquick' type="text" class="" placeholder="是否加急">
-					<input type="hidden" name="isq" value="0" />
+					
+				</div>
+				
+				<div class="mui-input-row"style="text-align: center;">
+					<!--<span class="mui-icon mui-icon-location"></span>
+					<input id='isquick' type="text" class="" placeholder="選擇衣物">-->
+					
+				选择衣物
+				 
 				</div>
 
 			</form>

@@ -29,7 +29,12 @@
 			});
 		</script>
 	</head>
-	<body style="background-color: #FFFFFF;">
+	<body style="background-color: #FFFFFF;">	
+		<header class="mui-bar mui-bar-nav" style="background: #FFFFFF;">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">洗衣籃</h1>
+		</header>
+		
 		<div style="width: 100%; height: 30%;" class="mui-slider-item">
 			<img style="width: 100%; height: auto;" src="img/clothes3.jpg" />
 			<span style="position: absolute; left:5vw; top:5vw; color: #FFFFFF;"  class="mui-icon mui-icon-back"></span>
@@ -72,47 +77,12 @@
 			        <span class="mui-media-object mui-pull-right" style="position: absolute; right: 2vw;top:2vw;">$2.60</span>
 			    </li>
 			</ul>
-			<div style="padding:0 3.5vw; padding-top:10vw;background: #FFFFFF; color:#000000;margin-top: -2vw;padding-bottom: 2vw;">Shirts</div>
-			<ul class="mui-table-view">
-			    <li class="mui-table-view-cell mui-media">
-			        <a href="javascript:;" style="padding-right: 15vw;">
-			            <span class="mui-media-object mui-pull-left mui-icon mui-icon-plusempty" style="color: #007AFF;"></span>
-			            <div class="mui-media-body">
-			                幸福
-			           
-			                <p class='mui-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
-			            </div>
-			        </a>
-			        <span class="mui-media-object mui-pull-right" style="position: absolute; right: 2vw;top:0;">$2.60</span>
-			    </li>
-			    <li class="mui-table-view-cell mui-media">
-			        <a href="javascript:;" style="padding-right: 15vw;">
-			            <span class="mui-media-object mui-pull-left mui-icon mui-icon-plusempty" style="color: #007AFF;"></span>
-			            <div class="mui-media-body">
-			                木屋
-			                <p class='mui-ellipsis'>想要这样一间小木屋，夏天挫冰吃瓜，冬天围炉取暖.</p>
-			            </div>
-			        </a>
-			        <span class="mui-media-object mui-pull-right" style="position: absolute; right: 2vw;top:0;">$2.60</span>
-			    </li>
-			    <li class="mui-table-view-cell mui-media">
-			        <a href="javascript:;" style="padding-right: 15vw;">
-			            <span class="mui-media-object mui-pull-left mui-icon mui-icon-plusempty" style="color: #007AFF;"></span>
-			            <div class="mui-media-body">
-			                CBD
-			                <p class='mui-ellipsis'>烤炉模式的城，到黄昏，如同打翻的调色盘一般.</p>
-			            </div>
-			        </a>
-			        <span class="mui-media-object mui-pull-right" style="position: absolute; right: 2vw;top:0;">$2.60</span>
-			    </li>
-			</ul>
-			
-		</div>
+
 		<div style="position: fixed; bottom: 0; background: ; width: 100%; border-top:3px solid #007AFF;" class="mui-table-view-cell">
 			<div style="float: left;">Your basket</div> 
 			<div style="float:right">
-				<span >$24.00</span>
-	        		<span class="mui-icon mui-icon-forward"></span>
+				<a href="add.php"><span >$24.00</span>
+	        		<span class="mui-icon mui-icon-forward"></span></a>
 			</div>
 	        
 	    </div>
