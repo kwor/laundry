@@ -101,11 +101,11 @@
 			<form id='login-form' class="mui-input-group">
 				<div class="mui-input-row">
 					<span class="mui-icon mui-icon-contact"></span>
-					<input id='account' type="text" class=" mui-input" placeholder="請輸入帳號">
+					<input id='account' type="text" name="email" class=" mui-input" placeholder="請輸入帳號">
 				</div>
 				<div class="mui-input-row">
 					<span class="mui-icon mui-icon-locked"></span>
-					<input id='password' type="password" class=" mui-input" placeholder="請輸入密碼">
+					<input id='password' type="password" name="pass" class=" mui-input" placeholder="請輸入密碼">
 				</div>
 			</form>
 			<form class="mui-input-group" style="background-color: #FFFFFF;">
@@ -123,17 +123,17 @@
 				<div class="link-area"><a href="reg.php" id='reg'>註冊帳號</a> <span class="spliter">|</span> <a id='forgetPassword'>忘記密碼</a>
 				</div>
 			</div>
-			<div id="" class="mui-content-padded oauth-area">
-                <p></p>
-			</div>
+            <div id="msg" class="mui-content-padded">
+                <p style="text-align: center ;color:red;"></p>
+            </div>
 		</div>
 		<script src="js/mui.min.js"></script>
 		<script src="js/mui.enterfocus.js"></script>
 		<script src="js/app.js"></script>
         <script src="js/jquery-3.2.1.min.js"></script>
         <script>
-            $('#reg').click(function () {
-                var data = $('form').serialize();
+            $('#login').click(function () {
+                var data = $('#login-form').serialize();
                 $.ajax({
                     url:'php/login.php',
                     datatype:'json',
@@ -147,7 +147,6 @@
                                 location.href="index.php";
                             }, 1000);
                         }
-
                     }
                 })
             })
