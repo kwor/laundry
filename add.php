@@ -83,7 +83,7 @@ wx.ready(function() {
 		
 		<div class="mui-content" style="background: #FFFFFF;">
 
-			<form class="mui-input-group" >
+			<form class="mui-input-group" id='add-form'>
 				<div class="mui-input-row">
 					<span class="mui-icon mui-icon-location"></span>
 					<input id='showCityPicker' type="text" class="" placeholder="选择地区">
@@ -132,7 +132,7 @@ wx.ready(function() {
 			</form>
 
 			<div class="mui-content-padded" style="background-color: #efeff4;">
-				<button id='reg' style="border-radius: 2vw;" class="mui-btn mui-btn-block mui-btn-primary">
+				<button id='add' style="border-radius: 2vw;" class="mui-btn mui-btn-block mui-btn-primary">
 				提交
 				</button>
 			</div>
@@ -161,8 +161,7 @@ wx.ready(function() {
 
 <script>(function($, doc) {
 	$.init();
-	
-	
+ 
 var dtpicker = new mui.DtPicker({
     type: "hour",//设置日历初始视图模式 
     beginDate: new Date(2015, 04, 25),//设置开始日期 
@@ -208,9 +207,7 @@ document.querySelector('#data1').addEventListener('tap',function () {
 					//var userResult = doc.getElementById('isquick');
 					showUserPickerButton.addEventListener('tap', function(event) {
 						userPicker.show(function(items) {
-							
 							  isquick.value = items[0].text;
-							  
 							//返回 false 可以阻止选择框的关闭
 							//return false;
 						});
@@ -218,50 +215,30 @@ document.querySelector('#data1').addEventListener('tap',function () {
 			 
 			})(mui, document);
 
-	$.plusReady(function() {
-		var settings = app.getSettings();
-		var regButton = doc.getElementById('reg');
-		var accountBox = doc.getElementById('account');
-		var passwordBox = doc.getElementById('password');
-		var passwordConfirmBox = doc.getElementById('password_confirm');
-		var emailBox = doc.getElementById('email');
-		regButton.addEventListener('tap', function(event) {
-			var regInfo = {
-				account: accountBox.value,
-				password: passwordBox.value,
-				email: emailBox.value
-			};
-			var passwordConfirm = passwordConfirmBox.value;
-			if(passwordConfirm != regInfo.password) {
-				plus.nativeUI.toast('密碼兩次輸入不一致');
-				return;
-			}
-			app.reg(regInfo, function(err) {
-				if(err) {
-					plus.nativeUI.toast(err);
-					return;
-				}
-				plus.nativeUI.toast('註冊成功');
-				/*
-				 * 注意：
-				 * 1、因本示例应用启动页就是登录页面，因此注册成功后，直接显示登录页即可；
-				 * 2、如果真实案例中，启动页不是登录页，则需修改，使用mui.openWindow打开真实的登录页面
-				 */
-				plus.webview.getLaunchWebview().show("pop-in", 200, function() {
-					plus.webview.currentWebview().close("none");
-				});
-				//若启动页不是登录页，则需通过如下方式打开登录页
-				//							$.openWindow({
-				//								url: 'login.html',
-				//								id: 'login',
-				//								show: {
-				//									aniShow: 'pop-in'
-				//								}
-				//							});
-			});
-		});
-	});
-}(mui, document));</script>
+	
+}(mui, document));
+
+ $('#add').click(function () {
+                var data = $('#add-form').serialize();
+                $.ajax({
+                    url:'php/add.php',
+                    datatype:'json',
+                    type:'post',
+                    data:data,
+                    success:function (msg) {
+                        var msg = JSON.parse(msg)
+                        $('#msg p').text(msg[0].msg);
+                        if(msg[0].code==200){
+                            setTimeout(function () {
+                                location.href="kuser.php";
+                            }, 1000);
+                        }
+                    }
+                })
+            })
+
+
+</script>
 	</body>
 
 </html>
