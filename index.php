@@ -63,55 +63,52 @@ require_once "php/dbconn.php";
 				</div>
 				<!--导航start-->
 				<div style="background: #FFFFFF; top:-2vh;" class=" mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted" style="top:-2vh;">
-				    <div class="mui-scroll nav-list" style="color:rgba(152, 150, 150, 0.71);font-size:2vh ; font-weight: lighter;">
-				        <a class="mui-control-item mui-active" href="?id=1">
+				    <div id="segmentedControl" class="mui-scroll nav-list" style="color:rgba(152, 150, 150, 0.71);font-size:2vh ; font-weight: lighter;">
+				        <a class="mui-control-item mui-active"  >
 				           上衣/衬衫
 				        </a>
-				        <a class="mui-control-item" href="?id=2">    
+				        <a class="mui-control-item" >    
                                           裤装
 				        </a>
-				        <a class="mui-control-item" href="?id=3">
+				        <a class="mui-control-item" >
 				            女装
 				        </a>
-				        <a class="mui-control-item" href="?id=4">
+				        <a class="mui-control-item" >
 				           西装     
 				        </a>
-				        <a class="mui-control-item" href="?id=5">
+				        <a class="mui-control-item" >
 				            内衣
 				        </a>
-				        <a class="mui-control-item" href="?id=6">
+				        <a class="mui-control-item" >
 				          皮衣  
 				        </a>
-				        <a class="mui-control-item" href="?id=7">
+				        <a class="mui-control-item" >
 				          其他 
 				        </a>
-				   <a class="mui-control-item" href="?id=8">
+				   <a class="mui-control-item" >
 				          棉衣
 				        </a>
 				    </div>
 				</div>
 
+<div id="lab">
 				<!--导航end-->
-				<ul style="margin-top:-2vh;" class="image-ul">
+				<?php 
+                  for ($x=1; $x<=8; $x++) {
+	            ?>
+				<ul style="margin-top:-2vh;" class="image-ul" >
 					
 					<?php
-					if(@$_REQUEST["id"]){
-						$id=$_REQUEST["id"];
-					}else{
-						$id=1;
-					}
-					
+
 					//echo $id;
-					 $sql = "select * from price where class=".$id;
+					 $sql = "select * from price where class=".$x;
+					 //echo $sql;
 					 $result = $mysqli->query($sql);
 					// print_r($result);
-				     while($row = $result->fetch_assoc()){
+				     while($row =  $result->fetch_array(MYSQLI_ASSOC)){
 				     	
                    ?>
   
-  
-
- 
 					<li   class="mui-card-header mui-card-media clicksnum"  style="height:40vw;background-image:url(img/clothes1.jpg);margin-bottom: 1px;" id="<?=$row["id"]?>">					
 						<div class="price"><a>$<?=$row["gprice"]?></a></div>
 						<div class="click_roude"><div class="clicks"><a>11</a></div></div>
@@ -121,17 +118,28 @@ require_once "php/dbconn.php";
 						 
                        }   
                     ?>
-		   			<!--<li class="mui-card-header mui-card-media clicksnum" style="height:40vw;background-image:url(img/clothes2.jpg);margin-bottom: 1px;">		
-						<div class="price"><a>$222</a></div>
-						<div class="click_roude"><div class="clicks"><a>11</a></div>	</div>
-						<div class="text" style="left: 3vw;"><p style="color: #b1a4a4;font-size: 4.5vw;">T-shirt</p><p>Plo,crew or v-neck,long or short sleeves</p></div>
-					</li>-->
+	
 				</ul>
+				<?php
+					 }
+				?>
+			
+				</div>
 			</div>
 		</div>
 		<script src="js/mui.min.js"></script>
 		<script src="js/app.js"></script>
 		<script src="js/jquery-3.2.1.min.js"></script>
+	 <script>
+        $('#segmentedControl a').click(function() {
+            var i = $(this).index();//下标第一种写法
+            //var i = $('tit').index(this);//下标第二种写法
+            //$(this).addClass('select').siblings().removeClass('select');
+            $('#lab ul').eq(i).show().siblings().hide();
+        });
+    </script>
+    
+
 		<script>
 			//点击图片次数
 			var i = 0;

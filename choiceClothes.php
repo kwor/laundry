@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+require_once "php/dbconn.php";	
+?>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -41,11 +44,14 @@
 		</div>
 		<div class="mui-content" style="background-color: #FFFFFF; padding-bottom: 12vw;">
 			<div style="padding:3vw 3.5vw 0 3.5vw; background: #FFFFFF;">
-				<p>We're specical at caring for a wide range of shirt styles,including formal dress shirt and laid-back styles</p>
+				<p>以下是你的服装列表</p>
 			</div>
-			<div style="padding:0 3.5vw; padding-top:10vw;background: #FFFFFF; color:#000000;margin-top: -2vw;padding-bottom: 2vw;">Shirts</div>
-			<ul class="mui-table-view">
-			    <li class="mui-table-view-cell mui-media">
+			<div style="padding:0 3.5vw; padding-top:10vw;background: #FFFFFF; color:#000000;margin-top: -2vw;padding-bottom: 2vw;">洗衣篮</div>
+			<ul class="mui-table-view" id="cdlist">
+				
+				
+				
+			    <!--<li class="mui-table-view-cell mui-media">
 			        <a href="javascript:;" style="padding-right: 15vw;">
 			            <span class="mui-media-object mui-pull-left mui-icon mui-icon-plusempty" style="color: #007AFF;"></span>
 			            <div class="mui-media-body">
@@ -75,13 +81,13 @@
 			            </div>
 			        </a>
 			        <span class="mui-media-object mui-pull-right" style="position: absolute; right: 2vw;top:2vw;">$2.60</span>
-			    </li>
+			    </li>-->
 			</ul>
 
 		<div style="position: fixed; bottom: 0; background: ; width: 100%; border-top:3px solid #007AFF;" class="mui-table-view-cell">
-			<div style="float: left;">Your basket</div> 
+			<div style="float: left;">金额统计</div> 
 			<div style="float:right">
-				<a href="add.php"><span >$24.00</span>
+				<a href="add.php">$<span id="allpr">00.00</span>
 	        		<span class="mui-icon mui-icon-forward"></span></a>
 			</div>
 	        
@@ -92,5 +98,53 @@
 	<script src="js/mui.min.js"></script>
 	<script src="js/mui.enterfocus.js"></script>
 	<script src="js/app.js"></script>
+
+<script>
+	
+	 if(localStorage.length>0){  
+	 	 var listclass="";
+	    for(var i=0;i<localStorage.length;i++){  
+            var classid = localStorage.key(i);
+            var classids = localStorage.getItem(classid);
+            //console.log(classids);
+            var pp=0;
+            mui.post('php/getpinfo.php',{
+		         ids:classids
+		 
+	        },function(data){
+		     //服务器返回响应，根据响应结果，分析是否登录成功；
+		     var list = document.getElementById("cdlist") ;
+		     var allpr = document.getElementById("allpr") ;
+		      var fragment = document.createDocumentFragment();
+		      var li;
+		       li = document.createElement('li');
+		       
+		       li.className = 'mui-table-view-cell mui-media';
+		       
+		       
+		       li.innerHTML =      '<a style="padding-right: 15vw;">'+
+                                        '<span class="mui-media-object mui-pull-left mui-icon mui-icon-plusempty" style="color: #007AFF;"></span>'+
+                                        '<div class="mui-media-body">'+data["name"]+
+                                        '<p class="mui-ellipsis">价格'+
+                                        '</div></a><span class="mui-media-object mui-pull-right" style="position: absolute; right: 2vw;top:0;">$'+data["price"]+'</span></li>';
+                                        
+                                        
+		      fragment.appendChild(li);
+		      list.appendChild(fragment);
+		      
+		      pp+=parseInt(data["price"]);
+		      // console.log(pp);
+		       allpr.innerHTML=pp;
+	      },'json'
+        );
+        
+        }  
+	 }
+
+   //console.log(listclass);
+	
+</script>
+
+
 
 </html>
