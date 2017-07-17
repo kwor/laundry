@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+require_once "php/dbconn.php";	
+?>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -61,39 +64,68 @@
 				<!--导航start-->
 				<div style="background: #FFFFFF; top:-2vh;" class=" mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted" style="top:-2vh;">
 				    <div class="mui-scroll nav-list" style="color:rgba(152, 150, 150, 0.71);font-size:2vh ; font-weight: lighter;">
-				        <a class="mui-control-item mui-active">
-				           Special
+				        <a class="mui-control-item mui-active" href="?id=1">
+				           上衣/衬衫
 				        </a>
-				        <a class="mui-control-item">
-				            Shirts/Tops
+				        <a class="mui-control-item" href="?id=2">    
+                                          裤装
 				        </a>
-				        <a class="mui-control-item">
-				            Wash/Fold
+				        <a class="mui-control-item" href="?id=3">
+				            女装
 				        </a>
-				        <a class="mui-control-item">
-				            Suits
+				        <a class="mui-control-item" href="?id=4">
+				           西装     
 				        </a>
-				        <a class="mui-control-item">
-				            Ladies Wear
+				        <a class="mui-control-item" href="?id=5">
+				            内衣
 				        </a>
-				        <a class="mui-control-item">
-				            Outerwear
+				        <a class="mui-control-item" href="?id=6">
+				          皮衣  
+				        </a>
+				        <a class="mui-control-item" href="?id=7">
+				          其他 
+				        </a>
+				   <a class="mui-control-item" href="?id=8">
+				          棉衣
 				        </a>
 				    </div>
 				</div>
 
 				<!--导航end-->
 				<ul style="margin-top:-2vh;" class="image-ul">
-					<li   class="mui-card-header mui-card-media clicksnum"  style="height:40vw;background-image:url(img/clothes1.jpg);margin-bottom: 1px;">					
-						<div class="price"><a>$222</a></div>
+					
+					<?php
+					if(@$_REQUEST["id"]){
+						$id=$_REQUEST["id"];
+					}else{
+						$id=1;
+					}
+					
+					//echo $id;
+					 $sql = "select * from price where class=".$id;
+					 $result = $mysqli->query($sql);
+					// print_r($result);
+				     while($row = $result->fetch_assoc()){
+				     	
+                   ?>
+  
+  
+
+ 
+					<li   class="mui-card-header mui-card-media clicksnum"  style="height:40vw;background-image:url(img/clothes1.jpg);margin-bottom: 1px;" id="<?=$row["id"]?>">					
+						<div class="price"><a>$<?=$row["gprice"]?></a></div>
 						<div class="click_roude"><div class="clicks"><a>11</a></div></div>
-						<div class="text"><p style="color: #b1a4a4;font-size: 4.5vw;">T-shirt</p><p>Plo,crew or v-neck,long or short sleeves</p></div>		
+						<div class="text"><p style="color: #b1a4a4;font-size: 4.5vw;"><?=$row["name"]?></p><?php if($row["price"]!=0){ ?><p>普通价格：$<?=$row["price"]?><?php }?><?php if ($row["type"]==0){ ?>&nbsp;&nbsp;&nbsp;净熨<?php } ?></p></div>		
 					</li>
-		   			<li class="mui-card-header mui-card-media clicksnum" style="height:40vw;background-image:url(img/clothes2.jpg);margin-bottom: 1px;">		
+					<?php 
+						 
+                       }   
+                    ?>
+		   			<!--<li class="mui-card-header mui-card-media clicksnum" style="height:40vw;background-image:url(img/clothes2.jpg);margin-bottom: 1px;">		
 						<div class="price"><a>$222</a></div>
 						<div class="click_roude"><div class="clicks"><a>11</a></div>	</div>
 						<div class="text" style="left: 3vw;"><p style="color: #b1a4a4;font-size: 4.5vw;">T-shirt</p><p>Plo,crew or v-neck,long or short sleeves</p></div>
-					</li>
+					</li>-->
 				</ul>
 			</div>
 		</div>
@@ -105,6 +137,9 @@
 			var i = 0;
 			$('.clicksnum').click(function(){
 				i++;
+				 
+				localStorage.setItem(i,this.id);
+				
 				$(this).children('.click_roude').children('.clicks').show().children('a').html(i);		
 				$('.clicks_total').show().children('span').html(i);
 				//点击图片商品次数变化

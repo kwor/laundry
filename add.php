@@ -122,8 +122,7 @@ wx.ready(function() {
 				</div>
 				
 				<div class="mui-input-row"style="text-align: center;">
-					<!--<span class="mui-icon mui-icon-location"></span>
-					<input id='isquick' type="text" class="" placeholder="選擇衣物">-->
+					
 					
 				选择衣物
 				 
