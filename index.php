@@ -23,6 +23,8 @@ require_once "php/dbconn.php";
 			.text{position: relative;left: 60vw;bottom: -3vh; width: 40vw;  height: 10vh;}
 			.text p{line-height: 4vw; color:#eee; text-shadow: 5px 5px 5px #000000;}
 			.click_roude{width: 8vw; height: 8vw;}
+			.dp{display: none;}
+			
 		</style>
 		<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 		<script type="text/javascript">
@@ -130,13 +132,26 @@ require_once "php/dbconn.php";
 		<script src="js/mui.min.js"></script>
 		<script src="js/app.js"></script>
 		<script src="js/jquery-3.2.1.min.js"></script>
+		<script src="js/mui.indexedlist.js"></script>
+			<script type="text/javascript" charset="utf-8">
+			mui.init();
+			mui.ready(function() {
+				var header = document.querySelector('header.mui-bar');
+				var list = document.getElementById('list');
+				//calc hieght
+				list.style.height = (document.body.offsetHeight - header.offsetHeight) + 'px';
+				//create
+				window.indexedList = new mui.IndexedList(list);
+			});
+		</script>
 	 <script>
-        $('#segmentedControl a').click(function() {
-            var i = $(this).index();//下标第一种写法
+        //添加列表项的点击事件
+mui('#segmentedControl').on('tap', 'a', function(e) {
+             var i = $(this).index();//下标第一种写法
             //var i = $('tit').index(this);//下标第二种写法
             //$(this).addClass('select').siblings().removeClass('select');
             $('#lab ul').eq(i).show().siblings().hide();
-        });
+});  
     </script>
     
 
