@@ -70,7 +70,7 @@ require_once "php/dbconn.php";
 				           上衣/襯衫
 				        </a>
 				        <a class="mui-control-item" >    
-                                                        裤装
+                                                       褲裝
 				        </a>
 				        <a class="mui-control-item" >
 				            女裝
@@ -79,7 +79,7 @@ require_once "php/dbconn.php";
 				           西裝   
 				        </a>
 				        <a class="mui-control-item" >
-				            内衣
+				            內衣
 				        </a>
 				        <a class="mui-control-item" >
 				          皮衣  
@@ -133,7 +133,7 @@ require_once "php/dbconn.php";
 					</li>
 					<?php 
 						 
-                       }   
+                       }
                     ?>
 	
 				</ul>

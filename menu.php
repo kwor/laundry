@@ -192,15 +192,15 @@
 						<ul class="mui-table-view mui-table-view-chevron">
 							<li class="mui-table-view-cell">
 								<span class="mui-icon mui-icon-contact "></span>
-								<a id="rate" class="mui-navigate-right" href="reg.php">Creat New Account</a>
+								<a id="rate" class="mui-navigate-right" href="reg.php">創建賬號</a>
 							</li>
 							<li class="mui-table-view-cell">
 								<span class="mui-icon mui-icon-locked"></span>
-								<a id="share" class="mui-navigate-right" href="login.php">Sign In</a>
+								<a id="share" class="mui-navigate-right" href="login.php">登陸</a>
 							</li>
 							<li class="mui-table-view-cell">
 								<span class="mui-icon mui-icon-chatbubble"></span>
-								<a id="feedback-btn" href="#feedback" class="mui-navigate-right">Speak wit Us</a>
+								<a id="feedback-btn" href="#feedback" class="mui-navigate-right">聯系我們</a>
 							</li>
 							<li class="mui-table-view-cell">
 								<span class="mui-icon mui-icon-spinner-cycle mui-spin"></span>

@@ -44,7 +44,7 @@ require_once "php/dbconn.php";
 		</div>-->
 		<div class="mui-content" style="background-color: #FFFFFF; padding-bottom: 12vw;">
 			<div style="padding:3vw 3.5vw 0 3.5vw; background: #FFFFFF;">
-				<p>以下是你的服装列表</p>
+				<p>以下是您的服裝列表</p>
 			</div>
 			<!--<div style="padding:0 3.5vw; padding-top:10vw;background: #FFFFFF; color:#000000;margin-top: -2vw;padding-bottom: 2vw;">洗衣篮</div>-->
 			<ul class="mui-table-view" id="cdlist">
