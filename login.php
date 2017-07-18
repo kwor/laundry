@@ -120,7 +120,9 @@
 			</form>
 			<div class="mui-content-padded" >
 				<button id='login' style="border-radius: 2vw;" class="mui-btn mui-btn-block mui-btn-primary data-loading-text">登陸</button>
-				<div class="link-area"><a href="reg.php" id='reg'>註冊帳號</a> <span class="spliter">|</span> <a id='forgetPassword'>忘記密碼</a>
+				<div class="link-area"><a href="reg.php" id='reg'>註冊帳號</a> <span class="spliter">
+					
+					<!--|</span> <a id='forgetPassword'>忘記密碼</a>-->
 				</div>
 			</div>
             <div id="msg" class="mui-content-padded">

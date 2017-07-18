@@ -67,16 +67,16 @@ require_once "php/dbconn.php";
 				<div style="background: #FFFFFF; top:-2vh;" class=" mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted" style="top:-2vh;">
 				    <div id="segmentedControl" class="mui-scroll nav-list" style="color:rgba(152, 150, 150, 0.71);font-size:2vh ; font-weight: lighter;">
 				        <a class="mui-control-item mui-active"  >
-				           上衣/衬衫
+				           上衣/襯衫
 				        </a>
 				        <a class="mui-control-item" >    
-                                          裤装
+                                                        裤装
 				        </a>
 				        <a class="mui-control-item" >
-				            女装
+				            女裝
 				        </a>
 				        <a class="mui-control-item" >
-				           西装     
+				           西裝   
 				        </a>
 				        <a class="mui-control-item" >
 				            内衣
