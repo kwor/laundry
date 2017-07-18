@@ -97,11 +97,16 @@ require_once "php/dbconn.php";
 				<!--导航end-->
 				<?php 
                   for ($x=1; $x<=8; $x++) {
+                  	if ($x==1){
 	            ?>
+	            
 				<ul style="margin-top:-2vh;" class="image-ul" >
+					<?php }else{ ?>
+					
+			<ul style="margin-top:-2vh;display: none;" class="image-ul" >
 					
 					<?php
-
+                           } 
 					//echo $id;
 					 $sql = "select * from price where class=".$x;
 					 //echo $sql;
@@ -142,30 +147,20 @@ require_once "php/dbconn.php";
 		<script src="js/mui.min.js"></script>
 		<script src="js/app.js"></script>
 		<script src="js/jquery-3.2.1.min.js"></script>
-		<script src="js/mui.indexedlist.js"></script>
-			<script type="text/javascript" charset="utf-8">
-			mui.init();
-			mui.ready(function() {
-				var header = document.querySelector('header.mui-bar');
-				var list = document.getElementById('list');
-				//calc hieght
-				list.style.height = (document.body.offsetHeight - header.offsetHeight) + 'px';
-				//create
-				window.indexedList = new mui.IndexedList(list);
-			});
-		</script>
-	 <script>
-        //添加列表项的点击事件
+ 		 
+ 
+
+		<script>
+			
+			        //添加列表项的点击事件
 mui('#segmentedControl').on('tap', 'a', function(e) {
              var i = $(this).index();//下标第一种写法
             //var i = $('tit').index(this);//下标第二种写法
             //$(this).addClass('select').siblings().removeClass('select');
             $('#lab ul').eq(i).show().siblings().hide();
 });  
-    </script>
-    
 
-		<script>
+
 			//点击图片次数
 			var i = 0;
 			$('.clicksnum').click(function(){
@@ -208,52 +203,7 @@ mui('#segmentedControl').on('tap', 'a', function(e) {
 			    });
 			});
 		</script>
-			<script>
-			(function($, doc) {
-				$.init();
-				var settings = app.getSettings();
-				var account = doc.getElementById('account');
-				//
-				window.addEventListener('show', function() {
-					var state = app.getState();
-					account.innerText = state.account;
-				}, false);
-			
-					//设置
-					var settingButton = doc.getElementById('setting');
-					//settingButton.style.display = settings.autoLogin ? 'block' : 'none';
-					settingButton.addEventListener('tap', function(event) {
-						$.openWindow({
-							id: 'setting',
-							show: {
-								aniShow: 'pop-in'
-							},
-							styles: {
-								popGesture: 'hide'
-							},
-							waiting: {
-								autoShow: false
-							}
-						});
-					});
-					//--
-					$.oldBack = mui.back;
-					var backButtonPress = 0;
-					$.back = function(event) {
-						backButtonPress++;
-						if (backButtonPress > 1) {
-							plus.runtime.quit();
-						} else {
-							plus.nativeUI.toast('再按一次退出应用');
-						}
-						setTimeout(function() {
-							backButtonPress = 0;
-						}, 1000);
-						return false;
-					};
-				});
-			}(mui, document));
-		</script>
+	 
 
 	</body>
 </html>

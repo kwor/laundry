@@ -46,7 +46,7 @@ require_once "php/dbconn.php";
 			<div style="padding:3vw 3.5vw 0 3.5vw; background: #FFFFFF;">
 				<p>以下是你的服装列表</p>
 			</div>
-			<div style="padding:0 3.5vw; padding-top:10vw;background: #FFFFFF; color:#000000;margin-top: -2vw;padding-bottom: 2vw;">洗衣篮</div>
+			<!--<div style="padding:0 3.5vw; padding-top:10vw;background: #FFFFFF; color:#000000;margin-top: -2vw;padding-bottom: 2vw;">洗衣篮</div>-->
 			<ul class="mui-table-view" id="cdlist">
 				
 				
@@ -144,13 +144,9 @@ require_once "php/dbconn.php";
 		      var fragment = document.createDocumentFragment();
 		      var li;
 		       li = document.createElement('li');
-		       
-		       li.className = 'mui-table-view-cell mui-media';
-		       
-		       
+		       li.className = 'mui-table-view-cell mui-media'; 
 		       li.innerHTML =      '<div class="mui-slider-right mui-disabled"><a class="mui-btn mui-btn-red" >删除</a></div>'+
-                                        '<div class="mui-slider-handle">'+data["name"]+
-                                        '&nbsp;&nbsp;&nbsp;价格$'+data["price"]+'<div>';
+                                   '<div class="mui-slider-handle">'+data["name"]+'——价格$'+data["price"]+'<div>';
 		      fragment.appendChild(li);
 		      list.appendChild(fragment);
 		      

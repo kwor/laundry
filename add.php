@@ -86,28 +86,28 @@ wx.ready(function() {
 			<form class="mui-input-group" id='add-form'>
 				<div class="mui-input-row">
 					<span class="mui-icon mui-icon-location"></span>
-					<input name="city" id='showCityPicker' type="text"  placeholder="选择地区">
+					<input name="city" id='showCityPicker' type="text"  placeholder="選擇地區">
 				</div>
                 <div id="allmap" style="height: 200px;"></div>
             
 				<div class="mui-input-row">
 					<span class="mui-icon mui-icon-navigate"></span>
-					<input name="floor" type="text" class="" placeholder="层数">
+					<input name="floor" id="floor" type="text" class="" placeholder="層數">
 				</div>
 
 				<div class="mui-input-row">
 					<span class="mui-icon mui-icon-paperplane"></span>
-					<input name="room" type="text" class="" placeholder="室号">
+					<input name="room" id="room" type="text" class="" placeholder="室號">
 				</div>
 
 				<div class="mui-input-row">
 					<span class="mui-icon mui-icon-paperclip"></span>
-					<input name="building"  type="text" class="" placeholder="大厦名称">
+					<input name="building" id="building" type="text" class="" placeholder="大廈名稱">
 				</div>
 
 				<div class="mui-input-row">
 					<span class="mui-icon mui-icon-redo"></span>
-					<input name="instructions" type="text" class="" placeholder="上门收取及送递指示">
+					<input name="instructions" id="instructions" type="text" class="" placeholder="上門收取及送遞指示">
 				</div>
 
 				<div class="mui-input-row">
@@ -128,7 +128,7 @@ wx.ready(function() {
 			</form>
 
 			<div class="mui-content-padded" style="background-color: #efeff4;">
-				<button id='add' style="border-radius: 2vw;" class="mui-btn mui-btn-block mui-btn-primary">
+				<button id='addx' style="border-radius: 2vw;" class="mui-btn mui-btn-block mui-btn-primary">
 				提交
 				</button>
 			</div>
@@ -138,6 +138,7 @@ wx.ready(function() {
 		<script src="js/mui.picker.min.js"></script>
 		<script src="js/city.mo.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/app.js"></script>
+		<script src="js/jquery-3.2.1.min.js"></script>
 		
 	<script type="text/javascript">
 	// 百度地图API功能
@@ -158,6 +159,10 @@ wx.ready(function() {
 <script>(function($, doc) {
 	$.init();
  
+ 
+ isquick.value = "普通-48小时";
+
+ 
 var dtpicker = new mui.DtPicker({
     type: "hour",//设置日历初始视图模式 
     beginDate: new Date(2015, 04, 25),//设置开始日期 
@@ -173,14 +178,13 @@ document.querySelector('#data1').addEventListener('tap',function () {
     }) 
 })
  
-	$.ready(function() {
 					//普通示例
 					var cityPicker = new $.PopPicker({
 						layer: 2
 					});
 					cityPicker.setData(mcityData);
 					var showCityPickerButton = doc.getElementById('showCityPicker');
-					showCityPicker.value = "1112";
+					//showCityPicker.value = "1112";
 				//	var cityResult = doc.getElementById('cityResult');
 					showCityPickerButton.addEventListener('tap', function(event) {
 						cityPicker.show(function(items) {
@@ -212,34 +216,66 @@ document.querySelector('#data1').addEventListener('tap',function () {
 							//return false;
 						});
 					}, false);
-			 
-			})(mui, document);
-
+					
 	
+	         document.getElementById('addx').addEventListener('tap', function() {
+           	     var city = doc.getElementById('showCityPicker').value;
+                 var floor = doc.getElementById('floor').value;
+                 var room = doc.getElementById('room').value;
+                 var building = doc.getElementById('building').value;
+                 var instructions = doc.getElementById('instructions').value;
+                 var data1 = doc.getElementById('data1').value;
+                 
+                 datatime=data1;
+                 
+                 //倍数
+                 var isquick = doc.getElementById('isquick').value;
+                 
+                 if(isquick=="普通-48小时"){
+                 	isquick="0";
+                 }else{
+                 	isquick="1";
+                 }
+                 var price = doc.getElementById('price').value;
+ 
+                
+                 if(city==""||floor==""||room==""||building==""||instructions==""||datatime==""){
+                 	mui.alert("你有項目沒有填寫");
+                 }else{ 
+                 
+                     //提交本局数据
+        mui.post('php/add.php',{
+		city:city,
+		floor:floor,
+		room:room,
+		building:building,
+		instructions:instructions,
+		datatime:datatime,
+		isquick:isquick,
+		price:price
+	     },function(data){
+		//服务器返回响应，根据响应结果，分析是否登录成功；
+		console.log(data);
+		if(data==0){
+			 mui.alert("創建訂單失敗");
+           }else{
+           	if(data=="1"||data==1){
+           		 mui.alert("創建訂單成功");
+           	}else{
+           		 mui.alert(data);
+           	}
+           }
+           
+	     },'json'
+        );
+                 
+                 
+    }
+   });
+				
+   
 }(mui, document));
-
- $('#add').click(function () {
-                var data = $('#add-form').serialize();
-                $.ajax({
-                    url:'php/add.php',
-                    datatype:'json',
-                    type:'post',
-                    data:data,
-                    success:function (msg) {
-                        var msg = JSON.parse(msg)
-                        $('#msg p').text(msg[0].msg);
-                        
-                        /*
-                         if(msg[0].code==200){
-                            setTimeout(function () {
-                                location.href="kuser.php";
-                            }, 1000);
-                        }*/
-                    }
-                })
-            })
-
-
+ 
 </script>
 	</body>
 

@@ -1,6 +1,6 @@
 <?php
-	require_once "dbconn.php";
-	
+require_once "dbconn.php";
+
 if($_POST){
     $city = $_POST['city'];
     $floor = $_POST['floor'];
@@ -11,9 +11,23 @@ if($_POST){
 	$isquick = $_POST['isquick'];
 	$price = $_POST['price'];
 	
-   echo $_POST;
+	$sql = "insert into korder (city,floor,room,building,instructions,datatime,isquick,price,status) 
+	        VALUES('$city','$floor','$room','$building','$instructions','$datatime','$isquick','$price',0)";
+	 //echo json_encode($sql);
+	 
+	 $res = $mysqli->query($sql);
+        if (!$res) {
+            echo json_encode("2");
+        }else{
+            echo json_encode("1");
+        }
+        $mysqli->close();
+   
+  //  echo json_encode($sql);
 
-}else{
-    echo jsonError('非法请求');
+ }else{
+    echo json_encode("0");
 }
+
+
 ?>
