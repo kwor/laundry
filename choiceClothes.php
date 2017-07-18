@@ -38,10 +38,10 @@ require_once "php/dbconn.php";
 			<h1 class="mui-title">洗衣籃</h1>
 		</header>
 		
-		<div style="width: 100%; height: 30%;" class="mui-slider-item">
+		<!--<div style="width: 100%; height: 30%;" class="mui-slider-item">
 			<img style="width: 100%; height: auto;" src="img/clothes3.jpg" />
 			<span style="position: absolute; left:5vw; top:5vw; color: #FFFFFF;"  class="mui-icon mui-icon-back"></span>
-		</div>
+		</div>-->
 		<div class="mui-content" style="background-color: #FFFFFF; padding-bottom: 12vw;">
 			<div style="padding:3vw 3.5vw 0 3.5vw; background: #FFFFFF;">
 				<p>以下是你的服装列表</p>
@@ -86,9 +86,8 @@ require_once "php/dbconn.php";
 
 		<div style="position: fixed; bottom: 0; background: ; width: 100%; border-top:3px solid #007AFF;" class="mui-table-view-cell">
 			<div style="float: left;">金额统计</div> 
-			<div style="float:right">
-				<a href="add.php">$<span id="allpr">00.00</span>
-	        		<span class="mui-icon mui-icon-forward"></span></a>
+			<div style="float:right" id="pc">
+				
 			</div>
 	        
 	    </div>
@@ -114,7 +113,7 @@ require_once "php/dbconn.php";
 	        },function(data){
 		     //服务器返回响应，根据响应结果，分析是否登录成功；
 		     var list = document.getElementById("cdlist") ;
-		     var allpr = document.getElementById("allpr") ;
+		     var allpr = document.getElementById("pc") ;
 		      var fragment = document.createDocumentFragment();
 		      var li;
 		       li = document.createElement('li');
@@ -134,7 +133,7 @@ require_once "php/dbconn.php";
 		      
 		      pp+=parseInt(data["price"]);
 		      // console.log(pp);
-		       allpr.innerHTML=pp;
+		       allpr.innerHTML='<a href="add.php?money='+pp+'">$<span id="allpr">'+pp+'</span><span class="mui-icon mui-icon-forward"></span></a>';
 	      },'json'
         );
         
@@ -144,7 +143,4 @@ require_once "php/dbconn.php";
    //console.log(listclass);
 	
 </script>
-
-
-
 </html>

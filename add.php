@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-require_once("dbconn.php");
+require_once "php/dbconn.php";	
 ?>
 <html style="background-color: #FFFFFF;" >
 	<head>
@@ -86,48 +86,45 @@ wx.ready(function() {
 			<form class="mui-input-group" id='add-form'>
 				<div class="mui-input-row">
 					<span class="mui-icon mui-icon-location"></span>
-					<input id='showCityPicker' type="text" class="" placeholder="选择地区">
+					<input name="city" id='showCityPicker' type="text"  placeholder="选择地区">
 				</div>
                 <div id="allmap" style="height: 200px;"></div>
             
 				<div class="mui-input-row">
 					<span class="mui-icon mui-icon-navigate"></span>
-					<input type="text" class="" placeholder="层数">
+					<input name="floor" type="text" class="" placeholder="层数">
 				</div>
 
 				<div class="mui-input-row">
 					<span class="mui-icon mui-icon-paperplane"></span>
-					<input type="text" class="" placeholder="室号">
+					<input name="room" type="text" class="" placeholder="室号">
 				</div>
 
 				<div class="mui-input-row">
 					<span class="mui-icon mui-icon-paperclip"></span>
-					<input type="text" class="" placeholder="大厦名称">
+					<input name="building"  type="text" class="" placeholder="大厦名称">
 				</div>
 
 				<div class="mui-input-row">
 					<span class="mui-icon mui-icon-redo"></span>
-					<input type="text" class="" placeholder="上门收取及送递指示">
+					<input name="instructions" type="text" class="" placeholder="上门收取及送递指示">
 				</div>
 
 				<div class="mui-input-row">
                 		<span class="mui-icon mui-icon-compose"></span>
-	                	<input id='data1' style="left: 10vw; top: 2vw; width:100vw" placeholder="取貨時間"  data-options='{}' class="" ／>	
+	                	<input name="datatime" id='data1' style="left: 10vw; top: 2vw; width:100vw" placeholder="取貨時間"  data-options='{}' class="" ／>	
                 </div>
                 
                 <div class="mui-input-row">
 					<span class="mui-icon mui-icon-location"></span>
-					<input id='isquick' type="text" class="" placeholder="是否加急">
+					<input name="isquick" id='isquick' type="text" class="" placeholder="是否加急">
 					
 				</div>
-				
-				<div class="mui-input-row"style="text-align: center;">
-					
-					
-				选择衣物
-				 
-				</div>
-
+				<div class="mui-input-row">
+                		<span class="mui-icon mui-icon-compose"></span>
+                		<input  name="price" id='price' type="text"  value="<?=$_REQUEST["money"]?>">
+                 </div>
+                 
 			</form>
 
 			<div class="mui-content-padded" style="background-color: #efeff4;">
@@ -171,7 +168,7 @@ var dtpicker = new mui.DtPicker({
 
 document.querySelector('#data1').addEventListener('tap',function () {
     dtpicker.show(function(e) { 
-        console.log(e); 
+        //console.log(e); 
         data1.value = e.text;
     }) 
 })
@@ -183,12 +180,16 @@ document.querySelector('#data1').addEventListener('tap',function () {
 					});
 					cityPicker.setData(mcityData);
 					var showCityPickerButton = doc.getElementById('showCityPicker');
+					showCityPicker.value = "1112";
 				//	var cityResult = doc.getElementById('cityResult');
 					showCityPickerButton.addEventListener('tap', function(event) {
 						cityPicker.show(function(items) {
 						//	cityResult.innerText = "你选择的城市是:" + items[0].text + " " + items[1].text;
 							//console.log(items[0].text + " " + items[1].text);
+							showCityPicker.value = items[1].text;
+							
 							theLocation(items[1].text);
+							
 							//返回 false 可以阻止选择框的关闭
 							//return false;
 						});
@@ -227,11 +228,13 @@ document.querySelector('#data1').addEventListener('tap',function () {
                     success:function (msg) {
                         var msg = JSON.parse(msg)
                         $('#msg p').text(msg[0].msg);
-                        if(msg[0].code==200){
+                        
+                        /*
+                         if(msg[0].code==200){
                             setTimeout(function () {
                                 location.href="kuser.php";
                             }, 1000);
-                        }
+                        }*/
                     }
                 })
             })
