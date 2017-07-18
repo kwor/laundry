@@ -1,9 +1,9 @@
 ﻿<?php
 $mysql_conf = array(
-    'host'    => '127.0.0.1:3306',
-    'db'      => 'laundry',
+    'host'    => 'localhost',
+    'db'      => 'kdb2',
     'db_user' => 'root',
-    'db_pwd'  => 'root',
+    'db_pwd'  => '',
 );
 
 $mysqli = @new mysqli($mysql_conf['host'], $mysql_conf['db_user'], $mysql_conf['db_pwd']);

@@ -202,40 +202,40 @@
 								<span class="mui-icon mui-icon-chatbubble"></span>
 								<a id="feedback-btn" href="#feedback" class="mui-navigate-right">聯系我們</a>
 							</li>
-							<li class="mui-table-view-cell">
+							<!--<li class="mui-table-view-cell">
 								<span class="mui-icon mui-icon-spinner-cycle mui-spin"></span>
-								<a id="tel" class="mui-navigate-right">Share and Save</a>
+								<a id="tel" class="mui-navigate-right">Share and Save</a>-->
 							</li>
 						
 						</ul>
 						<ul class="mui-table-view mui-table-view-chevron">
 							<li class="mui-table-view-cell">
 								<span class="mui-icon mui-icon-chatboxes"></span>
-								<a href="#lock" class="mui-navigate-right">News and Promotion</a>
+								<a href="#lock" class="mui-navigate-right">新聞推廣</a>
 							</li>
 							<li class="mui-table-view-cell">
 								<span class="mui-icon mui-icon-flag"></span>
-								<a href="#lock" class="mui-navigate-right">Tutorial</a>
+								<a href="#lock" class="mui-navigate-right">教程</a>
 							</li>
 							<li class="mui-table-view-cell">
 								<span class="mui-icon mui-icon-help"></span>
 								<a href="#lock" class="mui-navigate-right">FAQ</a>
 							</li>
-							<li class="mui-table-view-cell">
+							<!--<li class="mui-table-view-cell">
 								<span class="mui-icon mui-icon-paperclip"></span>
 								<a href="#lock" class="mui-navigate-right">like Us on Facebook</a>
 							</li>
 							<li class="mui-table-view-cell">
 								<span class="mui-icon mui-icon-starhalf"></span>
 								<a href="#lock" class="mui-navigate-right">Rate Us in App Store</a>
-							</li>							
+							</li>-->					
 							<li class="mui-table-view-cell">
 								<span class="mui-icon mui-icon-map"></span>
-								<a href="#lock" class="mui-navigate-right">About Us</a>
+								<a href="#lock" class="mui-navigate-right">關於我們</a>
 							</li>
 							<li class="mui-table-view-cell">
 								<span class="mui-icon mui-icon-email"></span>
-								<a href="contact.php" class="mui-navigate-right">Contact Us</a>
+								<a href="contact.php" class="mui-navigate-right">聯繫我們</a>
 							</li>
 						</ul>
 						<ul class="mui-table-view">

@@ -129,7 +129,12 @@ require_once "php/dbconn.php";
 					
 						<div class="price"><a>$<?=$row["gprice"]?></a></div>
 						<div class="click_roude"><div class="clicks"><a>11</a></div></div>
-						<div class="text"><p style="color: #b1a4a4;font-size: 4.5vw;"><?=$row["name"]?></p><?php if($row["price"]!=0){ ?><p>普通价格：$<?=$row["price"]?><?php }?><?php if ($row["type"]==0){ ?>&nbsp;&nbsp;&nbsp;净熨<?php } ?></p></div>		
+						<div class="text">
+							<p style="color: #b1a4a4;font-size: 4.5vw;"><?=$row["name"]?></p>
+							<?php if($row["price"]!=0){ ?>
+							<p>普通價格：$<?=$row["price"]?><?php }?><?php if ($row["type"]==0){ ?>
+								&nbsp;&nbsp;&nbsp;净熨<?php } ?></p>
+						</div>
 					</li>
 					<?php 
 						 
