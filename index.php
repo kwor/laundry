@@ -9,6 +9,7 @@ require_once "php/dbconn.php";
 		<title></title>
 		<link href="css/mui.min.css" rel="stylesheet" />
 		<link href="css/index.css" rel="stylesheet" />
+		<link href="css/mui.indexedlist.css" rel="stylesheet" />
 		<style>
 			ul {
 				font-size: 14px;
@@ -24,7 +25,10 @@ require_once "php/dbconn.php";
 			.text p{line-height: 4vw; color:#eee; text-shadow: 5px 5px 5px #000000;}
 			.click_roude{width: 8vw; height: 8vw;}
 			.dp{display: none;}
-			
+			.mui-bar {
+				-webkit-box-shadow: none;
+				box-shadow: none;
+			}
 		</style>
 		<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 		<script type="text/javascript">
@@ -59,10 +63,29 @@ require_once "php/dbconn.php";
 			</button>
 		</header>
 		<div class="mui-content">
-			<div class="">
-	      		<div class=" mui-content-padded mui-input-row mui-search" >
-	    				<input type="search" class="mui-input-clear" placeholder="" style="background: #FFFFFF;">
+		 
+			<div id='list' >
+	      		<div class="mui-content-padded mui-indexed-list-search mui-input-row mui-search">
+					<input type="search" class="mui-input-clear mui-indexed-list-search-input" placeholder="搜索" style="background: #FFFFFF;">
 				</div>
+				
+				<div class="mui-indexed-list-bar" style="display: none;">
+					<a>A</a>
+				</div>
+				<div class="mui-indexed-list-alert"></div>
+				
+				<div class="mui-indexed-list-inner" style="position:absolute; z-index:1000;width: 100%;">
+					<div class="mui-indexed-list-empty-alert">没有数据</div>
+					<ul class="mui-table-view">
+						<li data-value="CSX" data-tags="ChangShaHuangHuaGuoJi" class="mui-table-view-cell mui-indexed-list-item">长沙黄花国际机场</li>
+						<li data-value="CIH" data-tags="ChangZhiWangCun" class="mui-table-view-cell mui-indexed-list-item">长治王村机场</li>
+						<li data-value="CZX" data-tags="ChangZhouBenNiu" class="mui-table-view-cell mui-indexed-list-item">常州奔牛机场</li>
+						<li data-value="CTU" data-tags="ChengDuShuangLiuGuoJi" class="mui-table-view-cell mui-indexed-list-item">成都双流国际机场</li>
+						<li data-value="CIF" data-tags="ChiFeng" class="mui-table-view-cell mui-indexed-list-item">赤峰机场</li>
+					</ul>
+				</div>
+				
+ 
 				<!--导航start-->
 				<div style="background: #FFFFFF; top:-2vh;" class=" mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted" style="top:-2vh;">
 				    <div id="segmentedControl" class="mui-scroll nav-list" style="color:rgba(152, 150, 150, 0.71);font-size:2vh ; font-weight: lighter;">
@@ -146,13 +169,29 @@ require_once "php/dbconn.php";
 			
 				</div>
 			</div>
-		</div>
+		  </div>
 		<script src="js/mui.min.js"></script>
 		<script src="js/app.js"></script>
 		<script src="js/jquery-3.2.1.min.js"></script>
-		<script>
 			
-			        //添加列表项的点击事件
+		<script src="js/mui.indexedlist.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+			mui.ready(function() {
+				var header = document.querySelector('header.mui-bar');
+				var list = document.getElementById('list');
+				//calc hieght
+				
+				list.style.height = (document.body.offsetHeight - header.offsetHeight) + 'px';
+				//create
+				window.indexedList = new mui.IndexedList(list);
+			});
+		</script>
+		
+		
+		<script>
+
+		//添加列表项的点击事件
 mui('#segmentedControl').on('tap', 'a', function(e) {
              var i = $(this).index();//下标第一种写法
             //var i = $('tit').index(this);//下标第二种写法

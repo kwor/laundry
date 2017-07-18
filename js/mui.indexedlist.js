@@ -51,6 +51,9 @@
 		},
 		caleLayout: function() {
 			var self = this;
+			//
+			self.el.inner.classList.add('empty');
+			console.log(self.el.inner.classList);
 			var withoutSearchHeight = (self.box.offsetHeight - self.el.search.offsetHeight) + 'px';
 			self.el.bar.style.height = withoutSearchHeight;
 			self.el.inner.style.height = withoutSearchHeight;
@@ -97,18 +100,30 @@
 					pointElement.classList.remove('active');
 					pointElement = null;
 				}
+				//
+				//self.el.inner.classList.remove('empty');
+				
+				if (self.el.inner.classList.value=="mui-indexed-list-inner empty"){
+					self.el.inner.classList.remove('empty');
+				}else{
+					self.el.inner.classList.add('empty');
+				}
 			};
 			self.el.bar.addEventListener('touchmove', function(event) {
 				findStart(event);
-			}, false);
+				
+ 			}, false);
 			self.el.bar.addEventListener('touchstart', function(event) {
 				findStart(event);
+ 				
 			}, false);
 			document.body.addEventListener('touchend', function(event) {
 				findEnd(event);
+
 			}, false);
 			document.body.addEventListener('touchcancel', function(event) {
 				findEnd(event);
+				 
 			}, false);
 		},
 		search: function(keyword) {
@@ -162,6 +177,7 @@
 			self.el.searchInput.addEventListener('input', function() {
 				var keyword = this.value;
 				self.search(keyword);
+				
 			}, false);
 			$(self.el.search).on('tap', classSelector('icon-clear'), function() {
 				self.search('');
