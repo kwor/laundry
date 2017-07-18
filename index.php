@@ -70,7 +70,7 @@ require_once "php/dbconn.php";
 				           上衣/襯衫
 				        </a>
 				        <a class="mui-control-item" >    
-                                                       褲裝
+                                         褲裝
 				        </a>
 				        <a class="mui-control-item" >
 				            女裝
@@ -93,7 +93,7 @@ require_once "php/dbconn.php";
 				    </div>
 				</div>
 
-<div id="lab">
+       <div id="lab">
 				<!--导航end-->
 				<?php 
                   for ($x=1; $x<=8; $x++) {
@@ -106,7 +106,7 @@ require_once "php/dbconn.php";
 			<ul style="margin-top:-2vh;display: none;" class="image-ul" >
 					
 					<?php
-                           } 
+                      } 
 					//echo $id;
 					 $sql = "select * from price where class=".$x;
 					 //echo $sql;
@@ -116,17 +116,16 @@ require_once "php/dbconn.php";
 				     	
                    ?>
   
-  <?php if ($row["pic"]!=null&&$row["pic"]!=""){ ?>
+         <?php if ($row["pic"]!=null&&$row["pic"]!=""){ ?>
 					<li   class="mui-card-header mui-card-media clicksnum"  style="height:40vw;background-image:url(img/<?=$row["pic"]?>);margin-bottom: 1px;" id="<?=$row["id"]?>">					
 
-<?php }else{ ?>
+        <?php }else{ ?>
 
 					<li   class="mui-card-header mui-card-media clicksnum"  style="height:40vw;background-image:url(img/clothes2.jpg);margin-bottom: 1px;" id="<?=$row["id"]?>">					
 
-<?php
-  }
-?>					
-					
+         <?php
+              }
+          ?>					
 						<div class="price"><a>$<?=$row["gprice"]?></a></div>
 						<div class="click_roude"><div class="clicks"><a>11</a></div></div>
 						<div class="text">
@@ -140,7 +139,6 @@ require_once "php/dbconn.php";
 						 
                        }
                     ?>
-	
 				</ul>
 				<?php
 					 }
@@ -152,9 +150,6 @@ require_once "php/dbconn.php";
 		<script src="js/mui.min.js"></script>
 		<script src="js/app.js"></script>
 		<script src="js/jquery-3.2.1.min.js"></script>
- 		 
- 
-
 		<script>
 			
 			        //添加列表项的点击事件
