@@ -111,7 +111,17 @@ require_once "php/dbconn.php";
 				     	
                    ?>
   
-					<li   class="mui-card-header mui-card-media clicksnum"  style="height:40vw;background-image:url(img/clothes1.jpg);margin-bottom: 1px;" id="<?=$row["id"]?>">					
+  <?php if ($row["pic"]!=null&&$row["pic"]!=""){ ?>
+					<li   class="mui-card-header mui-card-media clicksnum"  style="height:40vw;background-image:url(img/<?=$row["pic"]?>);margin-bottom: 1px;" id="<?=$row["id"]?>">					
+
+<?php }else{ ?>
+
+					<li   class="mui-card-header mui-card-media clicksnum"  style="height:40vw;background-image:url(img/clothes2.jpg);margin-bottom: 1px;" id="<?=$row["id"]?>">					
+
+<?php
+  }
+?>					
+					
 						<div class="price"><a>$<?=$row["gprice"]?></a></div>
 						<div class="click_roude"><div class="clicks"><a>11</a></div></div>
 						<div class="text"><p style="color: #b1a4a4;font-size: 4.5vw;"><?=$row["name"]?></p><?php if($row["price"]!=0){ ?><p>普通价格：$<?=$row["price"]?><?php }?><?php if ($row["type"]==0){ ?>&nbsp;&nbsp;&nbsp;净熨<?php } ?></p></div>		
