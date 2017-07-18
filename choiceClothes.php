@@ -99,13 +99,40 @@ require_once "php/dbconn.php";
 	<script src="js/app.js"></script>
 
 <script>
+	mui.init();
+			(function($) {
 	
+				//第一个demo，拖拽后显示操作图标，点击操作图标删除元素；
+				$('#cdlist').on('tap', '.mui-btn', function(event) {
+					var elem = this;
+					var li = elem.parentNode.parentNode;
+					mui.confirm('确认删除该条记录？', '洗衣篮', btnArray, function(e) {
+						if (e.index == 0) {
+							
+						
+							li.parentNode.removeChild(li);
+							
+							
+							//console.log(111);
+						} else {
+							setTimeout(function() {
+								$.swipeoutClose(li);
+							}, 0);
+						}
+					});
+				});
+				var btnArray = ['确认', '取消'];
+
+			})(mui);
+			
 	 if(localStorage.length>0){  
 	 	 var listclass="";
 	    for(var i=0;i<localStorage.length;i++){  
             var classid = localStorage.key(i);
+            //console.log(classid);
             var classids = localStorage.getItem(classid);
-            //console.log(classids);
+            
+           // console.log(classids);
             var pp=0;
             mui.post('php/getpinfo.php',{
 		         ids:classids
@@ -121,13 +148,9 @@ require_once "php/dbconn.php";
 		       li.className = 'mui-table-view-cell mui-media';
 		       
 		       
-		       li.innerHTML =      '<a style="padding-right: 15vw;">'+
-                                        '<span class="mui-media-object mui-pull-left mui-icon mui-icon-plusempty" style="color: #007AFF;"></span>'+
-                                        '<div class="mui-media-body">'+data["name"]+
-                                        '<p class="mui-ellipsis">价格'+
-                                        '</div></a><span class="mui-media-object mui-pull-right" style="position: absolute; right: 2vw;top:0;">$'+data["price"]+'</span></li>';
-                                        
-                                        
+		       li.innerHTML =      '<div class="mui-slider-right mui-disabled"><a class="mui-btn mui-btn-red" >删除</a></div>'+
+                                        '<div class="mui-slider-handle">'+data["name"]+
+                                        '&nbsp;&nbsp;&nbsp;价格$'+data["price"]+'<div>';
 		      fragment.appendChild(li);
 		      list.appendChild(fragment);
 		      
