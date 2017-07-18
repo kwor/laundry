@@ -101,7 +101,7 @@
 			<form id='login-form' class="mui-input-group">
 				<div class="mui-input-row">
 					<span class="mui-icon mui-icon-contact"></span>
-					<input id='account' type="text" name="email" class=" mui-input" placeholder="請輸入帳號">
+					<input id='account' type="text" name="email" class=" mui-input" placeholder="請輸入郵箱">
 				</div>
 				<div class="mui-input-row">
 					<span class="mui-icon mui-icon-locked"></span>
@@ -142,6 +142,8 @@
                     type:'post',
                     data:data,
                     success:function (msg) {
+                    	
+                     
                         var msg = JSON.parse(msg)
                         $('#msg p').text(msg[0].msg);
                         if(msg[0].code==200){
@@ -149,6 +151,9 @@
                                 location.href="kuser.php";
                             }, 1000);
                         }
+                        
+                        
+                        
                     }
                 })
             })

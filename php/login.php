@@ -6,7 +6,7 @@
  * Time: 16:29
  */
 require_once "dbconn.php";
-session_start();
+@session_start();
 if($_POST){
     $pass = $_POST['pass'];
     $email = $_POST['email'];
