@@ -97,7 +97,7 @@ require_once "php/dbconn.php";
 	            
 	                  //打开关于页面
            mui.openWindow({
-             url:'add_set.php?id=', 
+             url:'add_set.php?id='+elemv.dataset.ids, 
             
             });
             
@@ -132,7 +132,7 @@ require_once "php/dbconn.php";
 		       li = document.createElement('li');
 		       li.className = 'mui-table-view-cell mui-media'; 
 		       li.innerHTML =      '<div class="mui-slider-right mui-disabled"><a class="mui-btn mui-btn-red" id="'+data["id"]+'" data-nums="'+data["nums"]+'"  data-price="'+data["price"]+'">删除</a></div>'+
-                                   '<div class="mui-slider-handle" >'+data["name"]+'——价格$'+data["price"]+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+ 'x' + data["nums"] +'<div>';
+                                   '<div class="mui-slider-handle" data-ids="'+data["id"]+'">'+data["name"]+'——价格$'+data["price"]+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+ 'x' + data["nums"] +'<div>';
 		      fragment.appendChild(li);
 		      list.appendChild(fragment);
 		      
