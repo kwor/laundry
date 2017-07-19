@@ -66,7 +66,8 @@ require_once "php/dbconn.php";
 		 
 			<div id='list' >
 	      		<div class="mui-content-padded mui-indexed-list-search mui-input-row mui-search">
-					<input type="search" class="mui-input-clear mui-indexed-list-search-input" placeholder="搜索" style="background: #FFFFFF;">
+				<input type="search" class="mui-input-clear mui-indexed-list-search-input" placeholder="搜索" style="background: #FFFFFF;">
+				 
 				</div>
 				
 				<div class="mui-indexed-list-bar" style="display: none;">
@@ -74,14 +75,21 @@ require_once "php/dbconn.php";
 				</div>
 				<div class="mui-indexed-list-alert"></div>
 				
-				<div class="mui-indexed-list-inner" style="position:absolute; z-index:1000;width: 100%;">
-					<div class="mui-indexed-list-empty-alert">没有数据</div>
+				<div class="mui-indexed-list-inner" style="width: 100%;">
+					
 					<ul class="mui-table-view">
-						<li data-value="CSX" data-tags="ChangShaHuangHuaGuoJi" class="mui-table-view-cell mui-indexed-list-item">长沙黄花国际机场</li>
-						<li data-value="CIH" data-tags="ChangZhiWangCun" class="mui-table-view-cell mui-indexed-list-item">长治王村机场</li>
-						<li data-value="CZX" data-tags="ChangZhouBenNiu" class="mui-table-view-cell mui-indexed-list-item">常州奔牛机场</li>
-						<li data-value="CTU" data-tags="ChengDuShuangLiuGuoJi" class="mui-table-view-cell mui-indexed-list-item">成都双流国际机场</li>
-						<li data-value="CIF" data-tags="ChiFeng" class="mui-table-view-cell mui-indexed-list-item">赤峰机场</li>
+						<?php
+						//echo $id;
+					 $sql2 = "select * from price ";
+					 //echo $sql;
+					 $result2 = $mysqli->query($sql2);
+					// print_r($result);
+				     while($row2 =  $result2->fetch_array(MYSQLI_ASSOC)){
+					?>
+						<li data-value="<?=$row2["id"]?>" data-tags="ChangShaHuangHuaGuoJi" class="mui-table-view-cell mui-indexed-list-item"><?=$row2["name"]?>-价格$<?=$row2["gprice"]?></li>
+					<?php		
+					 }
+					?>
 					</ul>
 				</div>
 				

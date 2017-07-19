@@ -37,54 +37,16 @@ require_once "php/dbconn.php";
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title">洗衣籃</h1>
 		</header>
-		
-		<!--<div style="width: 100%; height: 30%;" class="mui-slider-item">
-			<img style="width: 100%; height: auto;" src="img/clothes3.jpg" />
-			<span style="position: absolute; left:5vw; top:5vw; color: #FFFFFF;"  class="mui-icon mui-icon-back"></span>
-		</div>-->
+
 		<div class="mui-content" style="background-color: #FFFFFF; padding-bottom: 12vw;">
 			<div style="padding:3vw 3.5vw 0 3.5vw; background: #FFFFFF;">
 				<p>以下是您的服裝列表</p>
 			</div>
-			<!--<div style="padding:0 3.5vw; padding-top:10vw;background: #FFFFFF; color:#000000;margin-top: -2vw;padding-bottom: 2vw;">洗衣篮</div>-->
 			<ul class="mui-table-view" id="cdlist">
-				
-				
-				
-			    <!--<li class="mui-table-view-cell mui-media">
-			        <a href="javascript:;" style="padding-right: 15vw;">
-			            <span class="mui-media-object mui-pull-left mui-icon mui-icon-plusempty" style="color: #007AFF;"></span>
-			            <div class="mui-media-body">
-			                幸福
-			           
-			                <p class='mui-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
-			            </div>
-			        </a>
-			        <span class="mui-media-object mui-pull-right" style="position: absolute; right: 2vw;top:0;">$2.60</span>
-			    </li>
-			    <li class="mui-table-view-cell mui-media">
-			        <a href="javascript:;" style="padding-right: 15vw;">
-			            <span class="mui-media-object mui-pull-left mui-icon mui-icon-plusempty" style="color: #007AFF;"></span>
-			            <div class="mui-media-body">
-			                木屋
-			                <p class='mui-ellipsis'>想要这样一间小木屋，夏天挫冰吃瓜，冬天围炉取暖.</p>
-			            </div>
-			        </a>
-			        <span class="mui-media-object mui-pull-right" style="position: absolute; right: 2vw;top:0;">$2.60</span>
-			    </li>
-			    <li class="mui-table-view-cell mui-media">
-			        <a href="javascript:;" style="padding-right: 15vw;">
-			            <span class="mui-media-object mui-pull-left mui-icon mui-icon-plusempty" style="color: #007AFF;"></span>
-			            <div class="mui-media-body">
-			                CBD
-			                <p class='mui-ellipsis'>烤炉模式的城，到黄昏，如同打翻的调色盘一般.</p>
-			            </div>
-			        </a>
-			        <span class="mui-media-object mui-pull-right" style="position: absolute; right: 2vw;top:2vw;">$2.60</span>
-			    </li>-->
+
 			</ul>
 
-		<div style="position: fixed; bottom: 0; background: ; width: 100%; border-top:3px solid #007AFF;" class="mui-table-view-cell">
+		<div style="position: fixed; bottom: 0; background:#FFFFFF; z-index:99999; width: 100%; border-top:3px solid #007AFF;" class="mui-table-view-cell">
 			<div style="float: left;">金额统计</div> 
 			<div style="float:right" id="pc">
 				
@@ -109,11 +71,19 @@ require_once "php/dbconn.php";
 					mui.confirm('确认删除该条记录？', '洗衣篮', btnArray, function(e) {
 						if (e.index == 0) {
 							
-						
+							 var classids = localStorage.removeItem(elem.id);
+							 
+						   var allpr = document.getElementById("pc") ;
+						   var allprsnum = document.getElementById("allpr").innerHTML ;
+						   //console.log(allprs);
+						    pc=parseInt(elem.dataset.price)*parseInt(elem.dataset.nums);
+						    pp=parseInt(allprsnum)-pc;
+						    
+						    //console.log(pp);
+		                    allpr.innerHTML='<a href="add.php?money='+pp+'">$<span id="allpr">'+pp+'</span><span class="mui-icon mui-icon-forward"></span></a>';
+		      				
 							li.parentNode.removeChild(li);
-							
-							
-							//console.log(111);
+
 						} else {
 							setTimeout(function() {
 								$.swipeoutClose(li);
@@ -130,32 +100,38 @@ require_once "php/dbconn.php";
 	    for(var i=0;i<localStorage.length;i++){  
             var classid = localStorage.key(i);
             //console.log(classid);
-            var classids = localStorage.getItem(classid);
             
-           // console.log(classids);
+            if(!isNaN(classid)){
+              var classidisnumber=classid;
+              var classids = localStorage.getItem(classid);
+            //console.log("1111");
+
+           //console.log(classids);
             var pp=0;
             mui.post('php/getpinfo.php',{
-		         ids:classids
+		         ids:classidisnumber,
+		         nums:classids
 		 
 	        },function(data){
+	        	
+	        	//console.log(data);
 		     //服务器返回响应，根据响应结果，分析是否登录成功；
 		     var list = document.getElementById("cdlist") ;
 		     var allpr = document.getElementById("pc") ;
-		      var fragment = document.createDocumentFragment();
-		      var li;
+		     var fragment = document.createDocumentFragment();
+		     var li;
 		       li = document.createElement('li');
 		       li.className = 'mui-table-view-cell mui-media'; 
-		       li.innerHTML =      '<div class="mui-slider-right mui-disabled"><a class="mui-btn mui-btn-red" >删除</a></div>'+
-                                   '<div class="mui-slider-handle">'+data["name"]+'——价格$'+data["price"]+'<div>';
+		       li.innerHTML =      '<div class="mui-slider-right mui-disabled"><a class="mui-btn mui-btn-red" id="'+data["id"]+'" data-nums="'+data["nums"]+'"  data-price="'+data["price"]+'">删除</a></div>'+
+                                   '<div class="mui-slider-handle" >'+data["name"]+'——价格$'+data["price"]+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+ 'x' + data["nums"] +'<div>';
 		      fragment.appendChild(li);
 		      list.appendChild(fragment);
 		      
-		      pp+=parseInt(data["price"]);
-		      // console.log(pp);
-		       allpr.innerHTML='<a href="add.php?money='+pp+'">$<span id="allpr">'+pp+'</span><span class="mui-icon mui-icon-forward"></span></a>';
+		      pp+=parseInt(data["price"])*parseInt(data["nums"]);
+		      allpr.innerHTML='<a href="add.php?money='+pp+'">$<span id="allpr">'+pp+'</span><span class="mui-icon mui-icon-forward"></span></a>';
 	      },'json'
         );
-        
+       } 
         }  
 	 }
 

@@ -52,8 +52,8 @@
 		caleLayout: function() {
 			var self = this;
 			//
-			self.el.inner.classList.add('empty');
-			console.log(self.el.inner.classList);
+			//self.el.inner.classList.add('empty');
+			//console.log(self.el.inner.classList);
 			var withoutSearchHeight = (self.box.offsetHeight - self.el.search.offsetHeight) + 'px';
 			self.el.bar.style.height = withoutSearchHeight;
 			self.el.inner.style.height = withoutSearchHeight;
@@ -101,13 +101,7 @@
 					pointElement = null;
 				}
 				//
-				//self.el.inner.classList.remove('empty');
-				
-				if (self.el.inner.classList.value=="mui-indexed-list-inner empty"){
-					self.el.inner.classList.remove('empty');
-				}else{
-					self.el.inner.classList.add('empty');
-				}
+			
 			};
 			self.el.bar.addEventListener('touchmove', function(event) {
 				findStart(event);
