@@ -87,38 +87,31 @@ wx.ready(function() {
 			
 				<div class="mui-input-row">
 					<span class="mui-icon mui-icon-navigate"></span>
-					<input name="floor" id="floor" type="text" class="" placeholder="層數">
+					<input name="color" id="color" type="text" class="" placeholder="颜色">
 				</div>
 
 				<div class="mui-input-row">
 					<span class="mui-icon mui-icon-paperplane"></span>
-					<input name="room" id="room" type="text" class="" placeholder="室號">
+					<input name="ms" id="ms" type="text" class="" placeholder="描述">
 				</div>
 
 				<div class="mui-input-row">
 					<span class="mui-icon mui-icon-paperclip"></span>
-					<input name="building" id="building" type="text" class="" placeholder="大廈名稱">
+					<input name="isjiang" id="isjiang" type="text" class="" placeholder="是否加浆">
 				</div>
 
 				<div class="mui-input-row">
 					<span class="mui-icon mui-icon-redo"></span>
-					<input name="instructions" id="instructions" type="text" class="" placeholder="上門收取及送遞指示">
-				</div>
-
-				<div class="mui-input-row">
-                		<span class="mui-icon mui-icon-compose"></span>
-	                	<input name="datatime" id='data1' style="left: 10vw; top: 2vw; width:100vw" placeholder="取貨時間"  data-options='{}' class="" ／>	
-                </div>
-                
-                <div class="mui-input-row">
-					<span class="mui-icon mui-icon-location"></span>
-					<input name="isquick" id='isquick' type="text" class="" placeholder="是否加急">
+					
+					<div class="mui-numbox" data-numbox-step='10' data-numbox-min='0' data-numbox-max='100'>
+  <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
+  <input class="mui-numbox-input" type="number" />
+  <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+</div>
 					
 				</div>
-				<div class="mui-input-row">
-                		<span class="mui-icon mui-icon-compose"></span>
-                		<input  name="price" id='price' type="text"  value="<?=$_REQUEST["money"]?>">
-                 </div>
+
+			 
                  
 			</form>
 
@@ -131,7 +124,6 @@ wx.ready(function() {
 		</div>
 		<script src="js/mui.min.js"></script>
 		<script src="js/mui.picker.min.js"></script>
-		<script src="js/city.mo.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/app.js"></script>
 		<script src="js/jquery-3.2.1.min.js"></script>
 		
@@ -141,124 +133,23 @@ wx.ready(function() {
 
 <script>(function($, doc) {
 	$.init();
- 
- 
- isquick.value = "普通-48小时";
-
- 
-var dtpicker = new mui.DtPicker({
-    type: "hour",//设置日历初始视图模式 
-    beginDate: new Date(2015, 04, 25),//设置开始日期 
-    endDate: new Date(2016, 04, 25),//设置结束日期 
-    labels: ['年', '月', '日', '时'],//设置默认标签区域提示语 
- 
-}) 
-
-document.querySelector('#data1').addEventListener('tap',function () {
-    dtpicker.show(function(e) { 
-        //console.log(e); 
-        data1.value = e.text;
-    }) 
-})
- 
-					//普通示例
-					var cityPicker = new $.PopPicker({
-						layer: 2
-					});
-					cityPicker.setData(mcityData);
-					var showCityPickerButton = doc.getElementById('showCityPicker');
-					//showCityPicker.value = "1112";
-				//	var cityResult = doc.getElementById('cityResult');
-					showCityPickerButton.addEventListener('tap', function(event) {
-						cityPicker.show(function(items) {
-						//	cityResult.innerText = "你选择的城市是:" + items[0].text + " " + items[1].text;
-							//console.log(items[0].text + " " + items[1].text);
-							showCityPicker.value = items[1].text;
-							
-							theLocation(items[1].text);
-							
-							//返回 false 可以阻止选择框的关闭
-							//return false;
-						});
-					}, false);
-		 
-		 	 var userPicker = new $.PopPicker();
-					userPicker.setData([{
+	                var colorPicker = new $.PopPicker();
+					colorPicker.setData([{
 						value: '0',
-						text: '普通-48小时'
+						text: '红色'
 					}, {
 						value: '1',
-						text: '加快-24小时(50%服务费)'
+						text: '蓝色'
 					}]);
-					var showUserPickerButton = doc.getElementById('isquick');
-					//var userResult = doc.getElementById('isquick');
-					showUserPickerButton.addEventListener('tap', function(event) {
-						userPicker.show(function(items) {
-							  isquick.value = items[0].text;
+					var showColorPickerButton = doc.getElementById('color');
+					showColorPickerButton.addEventListener('tap', function(event) {
+						colorPicker.show(function(items) {
+							  showColorPickerButton.value = items[0].text;
 							//返回 false 可以阻止选择框的关闭
 							//return false;
 						});
-					}, false);
-					
-	
-	         document.getElementById('addx').addEventListener('tap', function() {
-           	     var city = doc.getElementById('showCityPicker').value;
-                 var floor = doc.getElementById('floor').value;
-                 var room = doc.getElementById('room').value;
-                 var building = doc.getElementById('building').value;
-                 var instructions = doc.getElementById('instructions').value;
-                 var data1 = doc.getElementById('data1').value;
-                 
-                 datatime=data1;
-                 
-                 //倍数
-                 var isquick = doc.getElementById('isquick').value;
-                 
-                 if(isquick=="普通-48小时"){
-                 	isquick="0";
-                 }else{
-                 	isquick="1";
-                 }
-                 var price = doc.getElementById('price').value;
- 
-                
-                 if(city==""||floor==""||room==""||building==""||instructions==""||datatime==""){
-                 	mui.alert("你有項目沒有填寫");
-                 }else{ 
-                 
-                     //提交本局数据
-        mui.post('php/add.php',{
-		city:city,
-		floor:floor,
-		room:room,
-		building:building,
-		instructions:instructions,
-		datatime:datatime,
-		isquick:isquick,
-		price:price
-	     },function(data){
-		//服务器返回响应，根据响应结果，分析是否登录成功；
-		console.log(data);
-		if(data==0){
-			 mui.alert("創建訂單失敗");
-           }else{
-           	if(data=="1"||data==1){
-           		 mui.alert("創建訂單成功");
-           	}else{
-           		 mui.alert(data);
-           	}
-           }
-           
-	     },'json'
-        );
-                 
-                 
-    }
-   });
-				
-   
-}(mui, document));
- 
+					}, false);		
+ });
 </script>
 	</body>
 

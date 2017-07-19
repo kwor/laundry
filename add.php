@@ -199,7 +199,7 @@ document.querySelector('#data1').addEventListener('tap',function () {
 						});
 					}, false);
 		 
-		 	 var userPicker = new $.PopPicker();
+		 	        var userPicker = new $.PopPicker();
 					userPicker.setData([{
 						value: '0',
 						text: '普通-48小时'
