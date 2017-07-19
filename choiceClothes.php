@@ -123,6 +123,11 @@ require_once "php/dbconn.php";
 		 
 	        },function(data){
 	        	
+	        	if(data["gprice"]==0){
+	        		jiage=data["price"];
+	        	}else{
+	        		jiage=data["gprice"];
+	        	}
 	        	//console.log(data);
 		     //服务器返回响应，根据响应结果，分析是否登录成功；
 		     var list = document.getElementById("cdlist") ;
@@ -131,12 +136,12 @@ require_once "php/dbconn.php";
 		     var li;
 		       li = document.createElement('li');
 		       li.className = 'mui-table-view-cell mui-media'; 
-		       li.innerHTML =      '<div class="mui-slider-right mui-disabled"><a class="mui-btn mui-btn-red" id="'+data["id"]+'" data-nums="'+data["nums"]+'"  data-price="'+data["price"]+'">删除</a></div>'+
-                                   '<div class="mui-slider-handle" data-ids="'+data["id"]+'">'+data["name"]+'——价格$'+data["price"]+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+ 'x' + data["nums"] +'<div>';
+		       li.innerHTML =      '<div class="mui-slider-right mui-disabled"><a class="mui-btn mui-btn-red" id="'+data["id"]+'" data-nums="'+data["nums"]+'"  data-price="'+jiage+'">删除</a></div>'+
+                                   '<div class="mui-slider-handle" data-ids="'+data["id"]+'">'+data["name"]+'——价格$'+jiage+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+ 'x' + data["nums"] +'<div>';
 		      fragment.appendChild(li);
 		      list.appendChild(fragment);
 		      
-		      pp+=parseInt(data["price"])*parseInt(data["nums"]);
+		      pp+=parseInt(jiage)*parseInt(data["nums"]);
 		      allpr.innerHTML='<a href="add.php?money='+pp+'">$<span id="allpr">'+pp+'</span><span class="mui-icon mui-icon-forward"></span></a>';
 	      },'json'
         );

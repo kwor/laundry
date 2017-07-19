@@ -11,7 +11,6 @@
 		#allmap{width:100%;height:500px;}
 		p{margin-left:5px; font-size:14px;}
 	</style>
-	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZdDvmajgCuN4lLrvdccyHXiEGGDAY1iV"></script>
 	<style>
 			html,
 			body,
@@ -91,15 +90,29 @@ wx.ready(function() {
                        </div>
                  </div>
 
-				
+			   <div class="mui-input-row">
+					<span class="mui-icon mui-icon-location"></span>
+					<input name="colorbtn" id='colorbtn' type="text" class="" placeholder="选择颜色">
+					
+				</div>
                 
                 <div class="mui-input-row">
 					<span class="mui-icon mui-icon-location"></span>
 					<input name="isjiang" id='isjiang' type="text" class="" placeholder="是否加浆">
 					
 				</div>
+				
+			   <div class="mui-input-row">
+					<span class="mui-icon mui-icon-location"></span>
+					<input name="pbtn" id='pbtn' type="text" class="" placeholder="外观描述">
+					
+				</div>
+                
+                <div class="mui-input-row">
+					<span class="mui-icon mui-icon-location"></span>
+                    <input name="isgan" id='isgan' type="text" class="" placeholder="如何清洗">
 
-                 
+				</div>
 			</form>
 
 			<div class="mui-content-padded" style="background-color: #efeff4;">
@@ -120,14 +133,67 @@ wx.ready(function() {
 <script>(function($, doc) {
 	$.init();
  
+  		 	        var ganPicker = new $.PopPicker();
+					ganPicker.setData([{
+						value: '0',
+						text: '水洗-$20'
+					}, {
+						value: '1',
+						text: '干洗-$20'
+					}]);
+					var showganPickerButton = doc.getElementById('isgan');
+					showganPickerButton.addEventListener('tap', function(event) {
+						ganPicker.show(function(items) {
+							  showganPickerButton.value = items[0].text;
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
+					
+ 		 	        var ppPicker = new $.PopPicker();
+					ppPicker.setData([{
+						value: '0',
+						text: '發霉'
+					}, {
+						value: '1',
+						text: '霉點'
+					}]);
+					var showppPickerButton = doc.getElementById('pbtn');
+					showppPickerButton.addEventListener('tap', function(event) {
+						ppPicker.show(function(items) {
+							  showppPickerButton.value = items[0].text;
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
+					
+ 
+ 		 	        var icolorPicker = new $.PopPicker();
+					icolorPicker.setData([{
+						value: '0',
+						text: '红色'
+					}, {
+						value: '1',
+						text: '绿色'
+					}]);
+					var showiColorPickerButton = doc.getElementById('colorbtn');
+					showiColorPickerButton.addEventListener('tap', function(event) {
+						icolorPicker.show(function(items) {
+							  showiColorPickerButton.value = items[0].text;
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
+					
+					
  	
 		 	        var userPicker = new $.PopPicker();
 					userPicker.setData([{
 						value: '0',
-						text: '无'
+						text: '不加浆'
 					}, {
 						value: '1',
-						text: '加浆'
+						text: '加浆-$4'
 					}]);
 					var showUserPickerButton = doc.getElementById('isjiang');
 					showUserPickerButton.addEventListener('tap', function(event) {
@@ -140,27 +206,23 @@ wx.ready(function() {
 					
 	
 	         document.getElementById('addx').addEventListener('tap', function() {
-           	     var city = doc.getElementById('showCityPicker').value;
-                 var floor = doc.getElementById('floor').value;
-                 var room = doc.getElementById('room').value;
-                 var building = doc.getElementById('building').value;
-                 var instructions = doc.getElementById('instructions').value;
-                 var data1 = doc.getElementById('data1').value;
+           	     var colorbtn = doc.getElementById('colorbtn').value;
+                 var isjiang = doc.getElementById('isjiang').value;
+                 var pbtn = doc.getElementById('pbtn').value;
+                 var nums = mui(Selector).numbox().getValue()
+            
                  
-                 datatime=data1;
-                 
+                  
                  //倍数
-                 var isquick = doc.getElementById('isquick').value;
-                 
-                 if(isquick=="普通-48小时"){
+                  
+                 if(isjiang=="无"){
                  	isquick="0";
                  }else{
                  	isquick="1";
                  }
-                 var price = doc.getElementById('price').value;
- 
+  
                 
-                 if(city==""||floor==""||room==""||building==""||instructions==""||datatime==""){
+                 if(colorbtn==""||isjiang==""||pbtn==""||nums==""){
                  	mui.alert("你有項目沒有填寫");
                  }else{ 
                  
@@ -178,10 +240,10 @@ wx.ready(function() {
 		//服务器返回响应，根据响应结果，分析是否登录成功；
 		console.log(data);
 		if(data==0){
-			 mui.alert("創建訂單失敗");
+			 mui.alert("设置失败");
            }else{
            	if(data=="1"||data==1){
-           		 mui.alert("創建訂單成功");
+           		 mui.alert("设置成功");
            	}else{
            		 mui.alert(data);
            	}

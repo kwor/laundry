@@ -218,7 +218,7 @@ obj.style.top= '5vh';
          <?php
               }
           ?>				
-						<div class="price"><a>$<?=$row["gprice"]?></a></div>
+						<div class="price"><a>$<?php if ($row["gprice"]!=0){ ?><?=$row["gprice"]?><?php }else{?><?=$row["price"]?><?php } ?></a></div>
 						<div class="click_roude"><div class="clicks" id="nums<?=$row["id"]?>"><a id="nums_value<?=$row["id"]?>">11</a></div></div>
                         <input type="hidden" class="for_sum" id="for_exchange<?=$row["id"]?>" value="0"/>
                         <div class="click_roude_delete"><div class="clicks hide_delete" onClick="delete_item('for_exchange-<?=$row["id"]?>')" id="delete<?=$row["id"]?>" ><a>-</a></div></div>
