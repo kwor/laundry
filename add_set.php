@@ -1,7 +1,4 @@
 <!DOCTYPE html>
-<?php
-require_once "php/dbconn.php";	
-?>
 <html style="background-color: #FFFFFF;" >
 	<head>
 		<meta charset="utf-8">
@@ -76,7 +73,7 @@ wx.ready(function() {
 	<body style="background: #FFFFFF;">
 		<header class="mui-bar mui-bar-nav" style="background: #FFFFFF;">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-			<h1 class="mui-title">设置产品</h1>
+			<h1 class="mui-title">设置</h1>
 		</header>
 		
 		
@@ -84,34 +81,24 @@ wx.ready(function() {
 		<div class="mui-content" style="background: #FFFFFF;">
 
 			<form class="mui-input-group" id='add-form'>
-			
-				<div class="mui-input-row">
-					<span class="mui-icon mui-icon-navigate"></span>
-					<input name="color" id="color" type="text" class="" placeholder="颜色">
-				</div>
 
 				<div class="mui-input-row">
-					<span class="mui-icon mui-icon-paperplane"></span>
-					<input name="ms" id="ms" type="text" class="" placeholder="描述">
-				</div>
+                		<span class="mui-icon mui-icon-compose"></span>
+                		<div class="mui-numbox" data-numbox-step='1' data-numbox-min='0' data-numbox-max='100'>
+                         <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
+                         <input class="mui-numbox-input" type="number" />
+                         <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+                       </div>
+                 </div>
 
-				<div class="mui-input-row">
-					<span class="mui-icon mui-icon-paperclip"></span>
-					<input name="isjiang" id="isjiang" type="text" class="" placeholder="是否加浆">
-				</div>
-
-				<div class="mui-input-row">
-					<span class="mui-icon mui-icon-redo"></span>
-					
-					<div class="mui-numbox" data-numbox-step='10' data-numbox-min='0' data-numbox-max='100'>
-  <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
-  <input class="mui-numbox-input" type="number" />
-  <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
-</div>
+				
+                
+                <div class="mui-input-row">
+					<span class="mui-icon mui-icon-location"></span>
+					<input name="isjiang" id='isjiang' type="text" class="" placeholder="是否加浆">
 					
 				</div>
 
-			 
                  
 			</form>
 
@@ -126,30 +113,90 @@ wx.ready(function() {
 		<script src="js/mui.picker.min.js"></script>
 		<script src="js/app.js"></script>
 		<script src="js/jquery-3.2.1.min.js"></script>
-		
- 
+
 
 
 
 <script>(function($, doc) {
 	$.init();
-	                var colorPicker = new $.PopPicker();
-					colorPicker.setData([{
+ 
+ 	
+		 	        var userPicker = new $.PopPicker();
+					userPicker.setData([{
 						value: '0',
-						text: '红色'
+						text: '无'
 					}, {
 						value: '1',
-						text: '蓝色'
+						text: '加浆'
 					}]);
-					var showColorPickerButton = doc.getElementById('color');
-					showColorPickerButton.addEventListener('tap', function(event) {
-						colorPicker.show(function(items) {
-							  showColorPickerButton.value = items[0].text;
+					var showUserPickerButton = doc.getElementById('isjiang');
+					showUserPickerButton.addEventListener('tap', function(event) {
+						userPicker.show(function(items) {
+							  isjiang.value = items[0].text;
 							//返回 false 可以阻止选择框的关闭
 							//return false;
 						});
-					}, false);		
- });
+					}, false);
+					
+	
+	         document.getElementById('addx').addEventListener('tap', function() {
+           	     var city = doc.getElementById('showCityPicker').value;
+                 var floor = doc.getElementById('floor').value;
+                 var room = doc.getElementById('room').value;
+                 var building = doc.getElementById('building').value;
+                 var instructions = doc.getElementById('instructions').value;
+                 var data1 = doc.getElementById('data1').value;
+                 
+                 datatime=data1;
+                 
+                 //倍数
+                 var isquick = doc.getElementById('isquick').value;
+                 
+                 if(isquick=="普通-48小时"){
+                 	isquick="0";
+                 }else{
+                 	isquick="1";
+                 }
+                 var price = doc.getElementById('price').value;
+ 
+                
+                 if(city==""||floor==""||room==""||building==""||instructions==""||datatime==""){
+                 	mui.alert("你有項目沒有填寫");
+                 }else{ 
+                 
+                     //提交本局数据
+        mui.post('php/add.php',{
+		city:city,
+		floor:floor,
+		room:room,
+		building:building,
+		instructions:instructions,
+		datatime:datatime,
+		isquick:isquick,
+		price:price
+	     },function(data){
+		//服务器返回响应，根据响应结果，分析是否登录成功；
+		console.log(data);
+		if(data==0){
+			 mui.alert("創建訂單失敗");
+           }else{
+           	if(data=="1"||data==1){
+           		 mui.alert("創建訂單成功");
+           	}else{
+           		 mui.alert(data);
+           	}
+           }
+           
+	     },'json'
+        );
+                 
+                 
+    }
+   });
+				
+   
+}(mui, document));
+ 
 </script>
 	</body>
 
