@@ -92,7 +92,16 @@ require_once "php/dbconn.php";
 					});
 				});
 				var btnArray = ['确认', '取消'];
-
+	            $('#cdlist').on('tap', '.mui-slider-handle', function(event) { 
+	            var elemv = this;
+	            
+	                  //打开关于页面
+           mui.openWindow({
+             url:'add_set.php?id=', 
+            
+            });
+            
+	            });
 			})(mui);
 			
 	 if(localStorage.length>0){  

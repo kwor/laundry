@@ -141,6 +141,9 @@
 			input::-webkit-input-placeholder,textarea::-webkit-input-placeholder{color:#D8D8D8; font-weight:100; font-size: 2vh;}
 			
 		</style>
+		<?php
+		print_r($_SESSION);	
+		?>
 		<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 		<script type="text/javascript">
 			//通过config接口注入权限验证配置
