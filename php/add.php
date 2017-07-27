@@ -1,7 +1,6 @@
 <?php
+@session_start();
 require_once "dbconn.php";
-ini_set("display_errors", "On");
-error_reporting(E_ALL | E_STRICT);
 if($_POST){
     $city = $_POST['city'];
     $floor = $_POST['floor'];
@@ -12,44 +11,22 @@ if($_POST){
 	$isquick = $_POST['isquick'];
 	$price = $_POST['price'];
 	$jstr=$_POST['jstr'];
+ 
+ 
+	$sql = "insert into korder (city,floor,room,building,instructions,datatime,isquick,price,status,userid) 
+	        VALUES('$city','$floor','$room','$building','$instructions','$datatime','$isquick','$price',0,".$_SESSION['userinfo']["id"].")";
 	
-  	//$jstr="[{\"id\":\"69\",\"num\":\"1\"},{\"id\":\"71\",\"num\":\"1\"},{\"id\":\"73\",\"num\":\"1\"}]";
- 	$jstrs=strval($jstr);     
-     
-	$de_json = json_decode($jstrs,TRUE);
-    $count_json = count($de_json);
-	$arr=array();
-	for ($i = 0; $i < $count_json; $i++){
-		//echo var_dump($de_json);
-		$arr[$i]["id"] = $de_json[$i]['id'];
-		$arr[$i]["num"] = $de_json[$i]['num'];
-	}
-	 
-	$jstrs_arr=json_decode($jstrs,true);
-	 
-	print_r($jstrs_arr);
-	 
-	 
-
-	  
-    // echo $jstrp;
-	 exit;
-	
-    //$mysqli->autocommit(false);  
-	
-	$sql = "insert into korder (city,floor,room,building,instructions,datatime,isquick,price,status) 
-	        VALUES('$city','$floor','$room','$building','$instructions','$datatime','$isquick','$price',0)";
-	  
 	 $res = $mysqli->query($sql);
         if (!$res) {
         	//$mysqli->rollback();  
             echo json_encode("提交失败");
         }else{
         	
+		  /*
 		   $orderid=@mysqli_insert_id($mysqli);
 	       $jstrp=json_decode($jstr,true);
 		  
-  /*
+ 
 	       foreach($jstrp as $val){
 		
 		         $sql2="insert into orderp (orderid,pid,num) 

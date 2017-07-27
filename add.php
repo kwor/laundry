@@ -1,7 +1,11 @@
-<!DOCTYPE html>
 <?php
+@session_start();
+if(!($_SESSION['userinfo']["id"]>0)){
+	header("Location:login.php ");   
+}
 require_once "php/dbconn.php";	
 ?>
+<!DOCTYPE html>
 <html style="background-color: #FFFFFF;" >
 	<head>
 		<meta charset="utf-8">
@@ -294,14 +298,23 @@ document.querySelector('#data1').addEventListener('tap',function () {
 		
 	     },function(data){
 		//服务器返回响应，根据响应结果，分析是否登录成功；
-		console.log(data);
+		//console.log(data);
 		if(data==0){
 			 mui.alert("創建訂單失敗");
            }else{
            	if(data=="1"||data==1){
-           		 mui.alert("創建訂單成功");
+           		
+           		 mui.toast('創建訂單成功');
+
+           		// mui.alert("創建訂單成功");
+           		  mui.openWindow({
+                  url: 'kuser.php',
+                  id: 'kuser',
+                   });
+           		 
+           		 
            	}else{
-           		console.log(data);
+           		//console.log(data);
            		 mui.alert(data);
            	}
            }
