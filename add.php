@@ -303,7 +303,10 @@ document.querySelector('#data1').addEventListener('tap',function () {
 			 mui.alert("創建訂單失敗");
            }else{
            	if(data=="1"||data==1){
-           		
+           		 
+           		 //清空购物车
+           		localStorage.clear();
+           		 
            		 mui.toast('創建訂單成功');
 
            		// mui.alert("創建訂單成功");
