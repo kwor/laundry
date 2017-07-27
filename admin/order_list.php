@@ -4,7 +4,6 @@ require_once "../php/dbconn.php";
 if(!($_SESSION['auserinfo']["id"]>0)){
 	header("Location:index.php ");   
 }
-
 ?>
 <!DOCTYPE html>
 <html>
