@@ -28,10 +28,11 @@ require_once "../php/dbconn.php";
 			.order_id{font-size:1.15rem; padding-left: 3vw;}
 			.close_cion{position:absolute; right:3vw; top:1vh; width:6vw;}
 			.order_details{height:8vh;}
+			.order_details_num{float:left; margin-left:3vw}
 			.order_img{height:6vh; margin-top:1vh; float:left; width:auto;}
 			.order_img img{height:100%;}
-			.order_content{ float:left; margin-left:2vw;}
-			.order_content a{ font-size:0.95rem; line-height:1vw;}
+			.order_content,.order_details_num{ float:left; margin-left:5vw; height:8vh;}
+			.order_content a,.order_details_num a{ font-size:0.95rem; line-height:1vw; display:block; height:8vh; line-height:8vh;}
 			.mui-poppicker{z-index:9999;}
 		</style>
         
@@ -43,7 +44,7 @@ require_once "../php/dbconn.php";
  	</head>
 		<header class="mui-bar mui-bar-nav">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-			<h1 class="mui-title">待处理订单</h1>
+			<h1 class="mui-title">訂單詳情</h1>
 		</header>
 	<body>
     
@@ -53,7 +54,8 @@ require_once "../php/dbconn.php";
 					
 					<?php
 						//echo $id;
-					 $sql = "select k.*,o.* from korder as k left join orderp as o on k.id=o.orderid where k.status=0";
+					 $orderid=$_REQUEST["orderid"];
+					 $sql = "select k.*,o.* from korder as k left join orderp as o on k.id=o.orderid where k.status=0 and orderid='$orderid'";
 					 //echo $sql;
 					 $result = $mysqli->query($sql);
 					 //print_r($result);
@@ -78,6 +80,9 @@ require_once "../php/dbconn.php";
 						<div class="mui-table-cell order_content">
 							<a><?=$row2["name"]?>-<?=$row["city"]?>-$<?=$row2["price"]?></a>
 						</div>
+                        <div class="order_details_num">
+                        	<a>x<?=$row["num"]?></a>
+                        </div>
 					</div>
 				</li>
 			 
@@ -209,7 +214,7 @@ $(function(){
 		var _id=item_id[2];
 		$('#loadingDiv').css('display','block');
 		$('.main_alert_div').slideDown();
-		$('.order_id').text("訂單號："+_id);
+		$('.order_id').text("訂單號：<?=$orderid?>. 物品ID："+_id);
 	});
 	
 	$("#addx").click(function(){

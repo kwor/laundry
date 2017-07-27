@@ -14,12 +14,25 @@ if($_POST){
 	$jstr=$_POST['jstr'];
 	
   	//$jstr="[{\"id\":\"69\",\"num\":\"1\"},{\"id\":\"71\",\"num\":\"1\"},{\"id\":\"73\",\"num\":\"1\"}]";
-      
-	$jstrp = json_decode($jstr,TRUE);
- 
+ 	$jstrs=strval($jstr);     
+     
+	$de_json = json_decode($jstrs,TRUE);
+    $count_json = count($de_json);
+	$arr=array();
+	for ($i = 0; $i < $count_json; $i++){
+		//echo var_dump($de_json);
+		$arr[$i]["id"] = $de_json[$i]['id'];
+		$arr[$i]["num"] = $de_json[$i]['num'];
+	}
+	 
+	$jstrs_arr=json_decode($jstrs,true);
+	 
+	print_r($jstrs_arr);
+	 
+	 
 
 	  
-     echo $jstrp;
+    // echo $jstrp;
 	 exit;
 	
     //$mysqli->autocommit(false);  

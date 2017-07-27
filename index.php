@@ -22,7 +22,7 @@ require_once "php/dbconn.php";
 				padding: 10px;
 			}
 			.text{position: relative;left: 60vw;bottom: -3vh; width: 40vw;  height: 10vh; z-index:999;}
-			.text p{line-height: 4vw; color:#eee; text-shadow: 5px 5px 5px #000000; z-index:999;}
+			.text p{line-height: 4vw; color:#eee; z-index:999;}
 			.click_roude,.click_roude_delete{width: 8vw; height: 8vw; z-index:99999;}
 			.dp{display: none;}
 			.mui-bar {
@@ -31,16 +31,16 @@ require_once "php/dbconn.php";
 			}
 			.mui-input-row.mui-search .mui-icon-clear{left:70%;}
 			#search_text{background: #FFFFFF; margin-bottom:10px;}
-			#search_div{width: 100%; display:none; position:absolute; z-index:999999999; top:12vh;}
+			#search_div{width: 100%; display:none; position:absolute; z-index:999999999; top:13vh;}
 			#cancel{display:none;}
 			.mui-placeholder{width:80%;}
 			
 			.for_canvas{width:90%; z-index:9999999; height:100%; position:absolute;}
 			
 			.delete_one{position: absolute; bottom:10px;width: 100%;height: 100%;color: #FFFFFF;text-align: center;}
-			.hide_delete{ display:none; position:absolute;}
-			.show_delete{display:block;}
-			.click_roude_delete{position:absolute; bottom:0px; z-index:99999;}
+			.hide_delete{ display:none; position:absolute;opacity: 1;}
+			.show_delete{display:block;opacity: 1;}
+			.click_roude_delete{position:absolute; bottom:-20px; z-index:99999;}
 		</style>
 		<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 		<script type="text/javascript">
@@ -87,16 +87,16 @@ require_once "php/dbconn.php";
 	</head>
 	<body>
 		<header class="mui-bar mui-bar-nav" style="padding-right: 15px;background: #ffffff; z-index:999999;">
-			<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left"  >
-				<a class="mui-icon mui-icon-bars" href="menu.php"></a>
+			<button type="button" class="mui-left mui-btn  mui-btn-link mui-btn-nav mui-pull-left"  >
+				<a class="mui-icon mui-icon-bars" style="font-weight:bold; color:#3d3d3d;" href="menu.php"></a>
 			</button>	
-			<h1 class="mui-title" >Neighborhood Express</h1>
+			<h1 class="mui-title">Neighborhood Express</h1>
 			<button id='setting' class=" mui-pull-right mui-btn-link " >
 				<a href="choiceClothes.php">
 					<img src="images/shopcart.jpg" style="width: 6vw;height: 6vw;position: absolute;right: -1vw;top: 2.5vw;" />
 				</a>
 				<div class="clicks_total">
-					<span>11</span>
+					<span onClick="window.location.href='choiceClothes.php'">11</span>
 				</div>
 			</button>
 		</header>
@@ -124,7 +124,7 @@ require_once "php/dbconn.php";
 					// print_r($result);
 				     while($row2 =  $result2->fetch_array(MYSQLI_ASSOC)){
 					?>
-						<li data-value="<?=$row2["id"]?>" onClick="add_item('for_exchange_<?=$row2["id"]?>')" data-tags="ChangShaHuangHuaGuoJi" class="mui-table-view-cell mui-indexed-list-item"><?=$row2["name"]?>-價格$<?=$row2["gprice"]?></li>
+						<li data-value="<?=$row2["id"]?>" onClick="add_item('for_exchange_<?=$row2["id"]?>')" data-tags="ChangShaHuangHuaGuoJi" class="mui-table-view-cell mui-indexed-list-item"><?=$row2["name"]?>-價格$<?=$row2["price"]?></li>
 					<?php		
 					 }
 					?>
@@ -133,32 +133,28 @@ require_once "php/dbconn.php";
 				
  
 				<!--导航start-->
-				<div style="background: #FFFFFF; top:-2vh; z-index:999999;" class=" mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted" id="menu_div">
-				    <div id="segmentedControl" class="mui-scroll nav-list" style="color:rgba(152, 150, 150, 0.71);font-size:2vh ; font-weight: lighter;">
+                <div style="background: #FFFFFF; top:-2vh; z-index:999999;height: 40px;" class=" mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted" id="menu_div">
+                <div id="direction_icon" style="width:98%; margin-left:1%;">
+                	<img alt="left" id="scroll_bar_left" src="images/left.png" class="scroll_bar_icon"/>
+                	<img alt="right" id="scroll_bar_right" src="images/right.png" class="scroll_bar_icon"/>
+				</div>
+				    <div id="segmentedControl" class="mui-scroll nav-list" style="color:rgba(152, 150, 150, 0.71);font-size:2vh ; font-weight: lighter; height:45px; line-height: 45px;">
 				        <a class="mui-control-item mui-active"  >
-				           上衣/襯衫
+				           乾洗
 				        </a>
 				        <a class="mui-control-item" >    
-                                         褲裝
+                                         濕洗
 				        </a>
 				        <a class="mui-control-item" >
-				            女裝
+				            禮服/皮革
 				        </a>
 				        <a class="mui-control-item" >
-				           西裝   
+				           配件   
 				        </a>
 				        <a class="mui-control-item" >
-				            內衣
+				            家居用品
 				        </a>
-				        <a class="mui-control-item" >
-				          皮衣  
-				        </a>
-				        <a class="mui-control-item" >
-				          其他 
-				        </a>
-				   <a class="mui-control-item" >
-				          棉衣
-				        </a>
+				     
 				    </div>
 				</div>
 
@@ -183,12 +179,13 @@ obj.style.position = 'fixed';
 obj.style.top= '5vh';
 }
 }
+
 </script>
 
        <div id="lab" style="z-index:99;">
 				<!--导航end-->
 				<?php 
-                  for ($x=1; $x<=8; $x++) {
+                  for ($x=1; $x<=6; $x++) {
                   	if ($x==1){
 	            ?>
 	            
@@ -200,7 +197,7 @@ obj.style.top= '5vh';
 					<?php
                       } 
 					//echo $id;
-					 $sql = "select * from price where class=".$x;
+					 $sql = "select * from price where class=".$x." order by id desc";
 					 //echo $sql;
 					 $result = $mysqli->query($sql);
 					// print_r($result);
@@ -218,15 +215,14 @@ obj.style.top= '5vh';
          <?php
               }
           ?>				
-						<div class="price"><a>$<?php if ($row["gprice"]!=0){ ?><?=$row["gprice"]?><?php }else{?><?=$row["price"]?><?php } ?></a></div>
+						<div class="price"><a>$<?=$row["price"]?></a></div>
 						<div class="click_roude"><div class="clicks" id="nums<?=$row["id"]?>"><a id="nums_value<?=$row["id"]?>">11</a></div></div>
                         <input type="hidden" class="for_sum" id="for_exchange<?=$row["id"]?>" value="0"/>
-                        <div class="click_roude_delete"><div class="clicks hide_delete" onClick="delete_item('for_exchange-<?=$row["id"]?>')" id="delete<?=$row["id"]?>" ><a>-</a></div></div>
+                        <div class="click_roude_delete"><div class="clicks hide_delete" onClick="delete_item('for_exchange-<?=$row["id"]?>')" id="delete<?=$row["id"]?>" style="background-color:#5cbd9c;" ><a style="font-size:4em;">-</a></div></div>
 						<div class="text">
 							<p style="color: #b1a4a4;font-size: 4.5vw;"><?=$row["name"]?></p>
-							<?php if($row["price"]!=0){ ?>
-							<p>普通價格：$<?=$row["price"]?><?php }?><?php if ($row["type"]==0){ ?>
-								&nbsp;&nbsp;&nbsp;净熨<?php } ?></p>
+							
+							
 						</div>
 					</li>
 					<?php 
@@ -259,33 +255,35 @@ obj.style.top= '5vh';
 					for(var i=0;i<localStorage.length;i++){
 						var classid = localStorage.key(i);
 						var classids = localStorage.getItem(classid);
-						if(classids == 0){
-							/*  User Delete all the items  */
-							localStorage.removeItem(classid); 
-						}
-						else{
-							var new_delete_ele="#delete"+classid;
-							var new_nums_ele="#nums"+classid;
-							var new_nums_value_ele="#nums_value"+classid;
-						
-							$(new_delete_ele).removeClass("hide_delete");
-							$(new_delete_ele).addClass("show_delete");
-						
-							$(new_nums_ele).removeClass("hide_delete");
-							$(new_nums_ele).addClass("show_delete");
-						
-							//console.log(classid);
-						
-							document.getElementById("for_exchange"+ classid).value=classids;
-							$(new_nums_value_ele).html(classids);
-							//console.log(classids);
-						
-							var sum=0;
-							var items=document.getElementsByClassName("for_sum");
-							for(var a=0; a<items.length;a++){
-								sum = sum + parseInt(items.item(a).value);
+						if(!isNaN(classid)){
+							if(classids == 0){
+								/*  User Delete all the items  */
+								localStorage.removeItem(classid); 
 							}
-							$('.clicks_total').show().children('span').html(sum);
+							else{
+								var new_delete_ele="#delete"+classid;
+								var new_nums_ele="#nums"+classid;
+								var new_nums_value_ele="#nums_value"+classid;
+						
+								$(new_delete_ele).removeClass("hide_delete");
+								$(new_delete_ele).addClass("show_delete");
+						
+								$(new_nums_ele).removeClass("hide_delete");
+								$(new_nums_ele).addClass("show_delete");
+						
+								//console.log(classid);
+						
+								document.getElementById("for_exchange"+ classid).value=classids;
+								$(new_nums_value_ele).html(classids);
+								//console.log(classids);
+						
+								var sum=0;
+								var items=document.getElementsByClassName("for_sum");
+								for(var a=0; a<items.length;a++){
+									sum = sum + parseInt(items.item(a).value);
+								}
+								$('.clicks_total').show().children('span').html(sum);
+							}
 						}
 					}
 				}
@@ -400,18 +398,18 @@ mui('#segmentedControl').on('tap', 'a', function(e) {
 				$('.clicks_total').show().children('span').html(sum);
 				//点击图片商品次数变化
 				$(this).children('.click_roude').children('.clicks').animate({
-				     width:'8vw',
-				     height:"8vw",
-				     borderRadius:'4vw',
+				     width:'9vw',
+				     height:"9vw",
+				     borderRadius:'4.5vw',
 				     fontSize:'2vh',
-				     lineHeight:'8vw',
+				     lineHeight:'9vw',
 			    },100,function(){
 				    	$(this).animate({
-					     width:'5vw',
-					     height:"5vw",
-					     borderRadius:'2.5vw',
+					     width:'7vw',
+					     height:"7vw",
+					     borderRadius:'3.5vw',
 					     fontSize:'1vh',
-					     lineHeight:'5vw',
+					     lineHeight:'7vw',
 				    },100);
 				 });   
 				$(".clicks_total").animate({
