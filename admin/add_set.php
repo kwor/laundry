@@ -4,8 +4,8 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
 		<title></title>
-		<link href="css/mui.min.css" rel="stylesheet" />
-		<link href="css/mui.picker.min.css" rel="stylesheet" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/mui.picker.min.css" rel="stylesheet" />
 	<style type="text/css">
 		body, html {width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
 		#allmap{width:100%;height:500px;}
@@ -108,11 +108,7 @@ wx.ready(function() {
 					
 				</div>
                 
-                <div class="mui-input-row">
-					<span class="mui-icon mui-icon-location"></span>
-                    <input name="isgan" id='isgan' type="text" class="" placeholder="如何清洗">
-
-				</div>
+        
 			</form>
 
 			<div class="mui-content-padded" style="background-color: #efeff4;">
@@ -122,34 +118,17 @@ wx.ready(function() {
 			</div>
 
 		</div>
-		<script src="js/mui.min.js"></script>
-		<script src="js/mui.picker.min.js"></script>
-		<script src="js/app.js"></script>
-		<script src="js/jquery-3.2.1.min.js"></script>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/mui.picker.min.js"></script>
+		<script src="../js/app.js"></script>
+		<script src="../js/jquery-3.2.1.min.js"></script>
 
 
 
 
 <script>(function($, doc) {
 	$.init();
- 
-  		 	        var ganPicker = new $.PopPicker();
-					ganPicker.setData([{
-						value: '0',
-						text: '水洗-$20'
-					}, {
-						value: '1',
-						text: '干洗-$20'
-					}]);
-					var showganPickerButton = doc.getElementById('isgan');
-					showganPickerButton.addEventListener('tap', function(event) {
-						ganPicker.show(function(items) {
-							  showganPickerButton.value = items[0].text;
-							//返回 false 可以阻止选择框的关闭
-							//return false;
-						});
-					}, false);
-					
+
  		 	        var ppPicker = new $.PopPicker();
 					ppPicker.setData([{
 						value: '0',

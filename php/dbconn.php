@@ -1,9 +1,9 @@
-<?php
+﻿<?php
 $mysql_conf = array(
-    'host'    => mysql,
-    'db'      => 'mugua',
+    'host'    => "localhost",
+    'db'      => 'kdb2',
     'db_user' => 'root',
-    'db_pwd'  => '385765654',
+    'db_pwd'  => '',
 );
 
 $mysqli = @new mysqli($mysql_conf['host'], $mysql_conf['db_user'], $mysql_conf['db_pwd']);

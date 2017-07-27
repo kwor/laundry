@@ -1,3 +1,6 @@
+<?php 
+	@session_start();
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -193,6 +196,14 @@
 				<div class="mui-scroll-wrapper">
 					<div class="mui-scroll">
 						<ul class="mui-table-view mui-table-view-chevron">
+							
+							<?php if ($_SESSION['userinfo']["id"]>0){?>
+								
+							<li class="mui-table-view-cell">
+								<span class="mui-icon mui-icon-contact "></span>
+								<a id="rate" class="mui-navigate-right" href="kuser.php">賬號中心</a>
+							</li>
+								<?php }else{ ?>
 							<li class="mui-table-view-cell">
 								<span class="mui-icon mui-icon-contact "></span>
 								<a id="rate" class="mui-navigate-right" href="reg.php">創建賬號</a>
@@ -201,6 +212,9 @@
 								<span class="mui-icon mui-icon-locked"></span>
 								<a id="share" class="mui-navigate-right" href="login.php">登陸</a>
 							</li>
+							
+							<?php } ?>
+							
 							<li class="mui-table-view-cell">
 								<span class="mui-icon mui-icon-chatbubble"></span>
 								<a id="feedback-btn" href="#feedback" class="mui-navigate-right">聯系我們</a>

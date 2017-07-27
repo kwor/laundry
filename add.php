@@ -199,7 +199,7 @@ document.querySelector('#data1').addEventListener('tap',function () {
 						});
 					}, false);
 		 
-		 	        var userPicker = new $.PopPicker();
+		 	 var userPicker = new $.PopPicker();
 					userPicker.setData([{
 						value: '0',
 						text: '普通-48小时'
@@ -216,6 +216,41 @@ document.querySelector('#data1').addEventListener('tap',function () {
 							//return false;
 						});
 					}, false);
+					
+					
+		//打开关于页面
+			if(localStorage.length>0){
+				var str1="[";
+				var listclass="";
+				for(var i=0;i<localStorage.length;i++){
+					var classid = localStorage.key(i);
+					//console.log(classid);
+					
+					if(!isNaN(classid)){
+						//var classidisnumber=classid;
+						var num = localStorage.getItem(classid);
+						//
+						//console.log(classid);
+						if(i==0){
+							str1 += '{"id":"'+classid+'","num":"'+ num+'"}'; 
+						}else{
+							str1 += ',{"id":"'+classid+'","num":"'+ num+'"}'; 
+						}
+						
+ 						 
+ 						
+						//console.log(localist);
+						
+                 }
+                 
+          }
+          
+          str=str1+']';
+         
+          var jstr= JSON.stringify(str);
+          
+          console.log( jstr);
+        }
 					
 	
 	         document.getElementById('addx').addEventListener('tap', function() {
@@ -241,9 +276,11 @@ document.querySelector('#data1').addEventListener('tap',function () {
                 
                  if(city==""||floor==""||room==""||building==""||instructions==""||datatime==""){
                  	mui.alert("你有項目沒有填寫");
-                 }else{ 
+                 }else{
+                 	
+   
                  
-                     //提交本局数据
+        //提交本局数据
         mui.post('php/add.php',{
 		city:city,
 		floor:floor,
@@ -252,7 +289,9 @@ document.querySelector('#data1').addEventListener('tap',function () {
 		instructions:instructions,
 		datatime:datatime,
 		isquick:isquick,
-		price:price
+		price:price,
+		jstr:jstr
+		
 	     },function(data){
 		//服务器返回响应，根据响应结果，分析是否登录成功；
 		console.log(data);
@@ -262,6 +301,7 @@ document.querySelector('#data1').addEventListener('tap',function () {
            	if(data=="1"||data==1){
            		 mui.alert("創建訂單成功");
            	}else{
+           		console.log(data);
            		 mui.alert(data);
            	}
            }
