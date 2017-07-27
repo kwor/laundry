@@ -1,9 +1,34 @@
 <?php
 @session_start();
 require_once "../php/dbconn.php";
+/*
 if(!($_SESSION['auserinfo']["id"]>0)){
 	header("Location:index.php ");   
 }
+
+*/
+   //让用户自动在微信上登录
+	if(!($_SESSION['auserinfo']["id"]>0)){//检查一下session是不是为空，判断用户是否已登录
+		if(empty($_COOKIE['username'])||empty($_COOKIE['pass'])){//如果session为空，并且用户没有选择记录登录状
+			header("location:index.php");//转到登录页面
+		}else{//用户选择了记住登录状态
+			$username=$_COOKIE['username'];
+			$pass=$_COOKIE['pass'];
+ 			$sqlu = "select * from admin where name= '$username' AND  pass='$pass'";
+	   
+        $resultu = $mysqli->query($sqlu);
+        $resu=mysqli_fetch_assoc($resultu);
+        if (!$resu) {
+            header("location:index.php");
+        }else{
+            $_SESSION['auserinfo']=$resu;
+		}
+			
+		 
+		}
+	}
+	
+ 
 ?>
 <!DOCTYPE html>
 <html>
@@ -85,6 +110,7 @@ if(!($_SESSION['auserinfo']["id"]>0)){
 					</div>
 				</li>
 					<?php
+					
 						//echo $id;
 					 $sql = "select *,korder.id as orderid from korder,kuser where status=0 and korder.userid=kuser.id order by datatime asc";
 					 //echo $sql;

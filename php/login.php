@@ -20,6 +20,7 @@ if($_POST){
             echo jsonError('用戶名或密碼錯誤');
         }else{
             $_SESSION['userinfo']=$res;
+ 
             echo jsonSuccess('恭喜你登陸成功');
         }
         $mysqli->close();

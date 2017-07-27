@@ -22,7 +22,15 @@ if($_POST){
             echo jsonError('用戶名或密碼錯誤');
         }else{
             $_SESSION['auserinfo']=$res;
+			
+			//记住密码，默认
+            setcookie("username",$username,time()+3600*24*365);
+			setcookie("pass",$pass,time()+3600*24*365);
+		 
+			
             echo jsonSuccess('恭喜你登陸成功');
+			
+			
         }
         $mysqli->close();
     }

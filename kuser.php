@@ -1,6 +1,40 @@
 <?php 
 @session_start();
 require_once "php/dbconn.php";
+
+
+   //让用户自动在微信上登录
+	if(!($_SESSION['userinfo']["id"]>0)){//检查一下session是不是为空，判断用户是否已登录
+        
+		if(empty($_COOKIE['email'])||empty($_COOKIE['pass'])){//如果session为空，并且用户没有选择记录登录状
+	 
+			 header("location:login.php");//转到登录页面
+		}else{//用户选择了记住登录状态
+			$email=$_COOKIE['email'];
+			$pass=$_COOKIE['pass'];
+        $sqlu = "select * from kuser where email= '$email' AND  pass='$pass'";
+	   
+        $resultu = $mysqli->query($sqlu);
+        $resu=mysqli_fetch_assoc($resultu);
+        if (!$resu) {
+            header("location:login.php");
+        }else{
+            $_SESSION['userinfo']=$resu;
+		}
+			
+		 
+		}
+	}else{
+	//记住密码，默认
+	if(empty($_COOKIE['email'])||empty($_COOKIE['pass'])){
+		
+	setcookie("email",$_SESSION['userinfo']['email'],time()+3600*24*365);
+	setcookie("pass",$_SESSION['userinfo']['pass'],time()+3600*24*365);
+			
+	}
+ 
+	}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -63,7 +97,7 @@ require_once "php/dbconn.php";
 		 
 </div>
 	</body>
-	 
+	 <script src="js/mui.min.js"></script>
 </html>
 	
 	

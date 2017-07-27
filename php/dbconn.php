@@ -40,3 +40,4 @@ function jsonSuccess($msg,$data=null)
     $arr = array(['msg'=>$msg,'code'=>200,'data',$data]);
     return json_encode($arr);
 }
+

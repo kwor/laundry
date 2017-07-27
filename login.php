@@ -1,3 +1,8 @@
+<?php
+	 //  location.href="index.php";
+            setcookie('email', null);
+			setcookie('pass', null);
+	?>
 <!DOCTYPE html>
 <html>
 	<head>

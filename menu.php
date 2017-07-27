@@ -148,22 +148,7 @@
 		print_r($_SESSION);	
 		?>
 		<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-		<script type="text/javascript">
-			//通过config接口注入权限验证配置
-			wx.config({
-			    debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-			    appId: '', // 必填，公众号的唯一标识
-			    timestamp: '<?php echo time();?>', // 必填，生成签名的时间戳
-			    nonceStr: '<?php echo $nonceStr;?>', // 必填，生成签名的随机串
-			    signature: '<?php echo $signature;?>',// 必填，签名
-			    jsApiList: [] // 必填，需要使用的JS接口列表
-			});
-			//通过ready接口处理成功验证
-			wx.ready(function(){
-				// config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后
-			});
-		</script>
-		
+ 
 		<link rel="stylesheet" type="text/css" href="./css/feedback-page.css" />
 	</head>
 	
@@ -215,22 +200,23 @@
 							
 							<?php } ?>
 							
-							<li class="mui-table-view-cell">
+							<!--<li class="mui-table-view-cell">
 								<span class="mui-icon mui-icon-chatbubble"></span>
 								<a id="feedback-btn" href="#feedback" class="mui-navigate-right">聯系我們</a>
 							</li>
-							<!--<li class="mui-table-view-cell">
+							<li class="mui-table-view-cell">
 								<span class="mui-icon mui-icon-spinner-cycle mui-spin"></span>
-								<a id="tel" class="mui-navigate-right">Share and Save</a>-->
-							</li>
+								<a id="tel" class="mui-navigate-right">Share and Save</a>
+							</li>-->
 						
 						</ul>
 						<ul class="mui-table-view mui-table-view-chevron">
+				 
 							<li class="mui-table-view-cell">
-								<span class="mui-icon mui-icon-chatboxes"></span>
-								<a href="#lock" class="mui-navigate-right">新聞推廣</a>
+								<span class="mui-icon mui-icon-chatbubble"></span>
+								<a id="feedback-btn" href="#feedback" class="mui-navigate-right">FAQ</a>
 							</li>
-							<li class="mui-table-view-cell">
+							<!--<li class="mui-table-view-cell">
 								<span class="mui-icon mui-icon-flag"></span>
 								<a href="#lock" class="mui-navigate-right">教程</a>
 							</li>
@@ -238,7 +224,7 @@
 								<span class="mui-icon mui-icon-help"></span>
 								<a href="#lock" class="mui-navigate-right">FAQ</a>
 							</li>
-							<!--<li class="mui-table-view-cell">
+							<li class="mui-table-view-cell">
 								<span class="mui-icon mui-icon-paperclip"></span>
 								<a href="#lock" class="mui-navigate-right">like Us on Facebook</a>
 							</li>
@@ -248,7 +234,7 @@
 							</li>-->					
 							<li class="mui-table-view-cell">
 								<span class="mui-icon mui-icon-map"></span>
-								<a href="#lock" class="mui-navigate-right">關於我們</a>
+								<a href="about.php" class="mui-navigate-right">關於我們</a>
 							</li>
 							<li class="mui-table-view-cell">
 								<span class="mui-icon mui-icon-email"></span>
@@ -265,75 +251,24 @@
 			</div>
 			<!--页面主内容区结束-->
 		</div>
-		<div id="notifications_disturb" class="mui-page">
-			<div class="mui-navbar-inner mui-bar mui-bar-nav">
-				<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
-					<span class="mui-icon mui-icon-left-nav"></span>新消息通知
-				</button>
-				<h1 class="mui-center mui-title">功能消息免打扰</h1>
-			</div>
-			<div class="mui-page-content">
-				<div class="mui-scroll-wrapper">
-					<div class="mui-scroll">
-						<ul class="mui-table-view mui-table-view-radio">
-							<li class="mui-table-view-cell">
-								<a class="mui-navigate-right">開啟</a>
-							</li>
-							<li class="mui-table-view-cell">
-								<a class="mui-navigate-right">只在夜間開啟</a>
-							</li>
-							<li class="mui-table-view-cell">
-								<a class="mui-navigate-right">關閉</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
+		 
 
-		<div id="lock" class="mui-page">
-			<div class="mui-navbar-inner mui-bar mui-bar-nav">
-				<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
-					<span class="mui-icon mui-icon-left-nav"></span>設置
-				</button>
-				<h1 class="mui-center mui-title">鎖屏圖案</h1>
-			</div>
-			<div class="mui-page-content">
-				<div class="mui-content-padded">
-					<ul class="mui-table-view mui-table-view-chevron">
-						<li class="mui-table-view-cell">
-							使用手勢解鎖
-							<div id="lockState" class="mui-switch">
-								<div class="mui-switch-handle"></div>
-							</div>
-						</li>
-					</ul>
-					<div class="mui-locker" data-locker-width='320' data-locker-height='320' data-locker-options='{"ringColor":"rgba(221,221,221,1)","fillColor":"#ffffff","pointColor":"rgba(0,136,204,1)","lineColor":"rgba(0,136,204,1)"}'>
-					</div>
-				</div>
-			</div>
-		</div>
+
 
 		<div id="feedback" class="mui-page feedback" >
 			<div class="mui-navbar-inner mui-bar mui-bar-nav" style="background-color:#FFFFFF ;">
 				<button style="color:##4cd964" type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
 					<span class="mui-icon mui-icon-left-nav"></span>
 				</button>
-				<h1 class="mui-center mui-title">問題反饋</h1>
+				<h1 class="mui-center mui-title">FAQ</h1>
 			</div>
 			<div class="mui-page-content">
-				<p style="color:#000000; font-weight:100; font-size: 2vh;">問題和意見</p>
+				 
 				<div class="row mui-input-row">
-					<textarea id='question' class="mui-input-clear question" placeholder="请详细描述你的问题和意见..."></textarea>
+					此处是一些内容
 				</div>
-				<p style="color:#000000; font-weight:100; font-size: 2vh;">圖片(選填,提供問題截圖)</p>
-				<div id='image-list' class="row image-list">
-				</div>
-				<p style="color:#000000; font-weight:100; font-size: 2vh;">QQ/郵箱</p>
-				<div class="mui-input-row">
-					<input id='contact' type="text" class="mui-input-clear  contact" placeholder="(选填,方便我们联系你 )" />
-				</div>
-				<button id='submit' type="button" class="mui-btn mui-btn-green">提交</button>
+			
+				<!--<button id='submit' type="button" class="mui-btn mui-btn-green">提交</button>-->
 			</div>
 			<p style="color:#D8D8D8; font-weight:100; font-size: 2vh;">此實例基於環信 “WebIM SDK” + 環信 “移動客服” 實現，在環信 “移動客服面板” 能夠查閱反饋信息。</p>
 		</div>
@@ -357,60 +292,7 @@
 		});
 		 //初始化单页的区域滚动
 		mui('.mui-scroll-wrapper').scroll();
-
-
-	
-		 //退出操作******************
- 		 //************************
-		 //锁屏设置
-		(function($, doc) {
-			//$.init();
-			$.plusReady(function() {
-				var settings = app.getSettings();
-				var lockStateButton = doc.getElementById("lockState");
-				var locker = doc.querySelector('.mui-locker');
-				lockStateButton.classList[settings.gestures ? 'add' : 'remove']('mui-active')
-				locker.style.display = settings.gestures ? 'block' : 'none';
-				lockStateButton.addEventListener('toggle', function(event) {
-					var isActive = event.detail.isActive;
-					locker.style.display = isActive ? 'block' : 'none';
-					if (!isActive) {
-						//						alert(0);
-						settings.gestures = '';
-						app.setSettings(settings);
-					}
-				}, false);
-				var record = [];
-				locker.addEventListener('done', function(event) {
-					var rs = event.detail;
-					if (rs.points.length < 4) {
-						plus.nativeUI.toast('设定的手势太简单了');
-						record = [];
-						rs.sender.clear();
-						return;
-					}
-					record.push(rs.points.join(''));
-					if (record.length >= 2) {
-						if (record[0] == record[1]) {
-							plus.nativeUI.toast('解锁手势设定成功，以后用户只需使用手势解锁而无需输入密码登录。');
-							settings.gestures = record[0];
-							settings.autoLogin = true;
-							app.setSettings(settings);
-							setTimeout(function() {
-								$.back();
-							}, 200);
-						} else {
-							plus.nativeUI.toast('两次手势不一致,请重新设定');
-						}
-						rs.sender.clear();
-						record = [];
-					} else {
-						plus.nativeUI.toast('请确认手势设定');
-						rs.sender.clear();
-					}
-				}, false);
-			});
-		}(mui, document));
+ 
 		 //********************
 		var view = viewApi.view;
 		(function($) {

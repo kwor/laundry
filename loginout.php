@@ -4,14 +4,18 @@
 if (session_destroy())
         {
           //  location.href="index.php";
-			
-			header("Location:index.php ");   
+            setcookie('email', null);
+			setcookie('pass', null);
+			header("Location:login.php ");   
             exit();
         }
         else
         {
+        	
             unset($_SESSION);
-            header("Location:kuser.php ");   
+			setcookie('email', null);
+			setcookie('pass', null);
+            header("Location:login.php ");   
             exit();
         }
 
