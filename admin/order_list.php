@@ -1,7 +1,12 @@
-<!DOCTYPE html>
 <?php
-require_once "../php/dbconn.php";	
+@session_start();
+require_once "../php/dbconn.php";
+if(!($_SESSION['auserinfo']["id"]>0)){
+	header("Location:index.php ");   
+}
+
 ?>
+<!DOCTYPE html>
 <html>
 	<head>
     	<meta charset="utf-8">
@@ -63,7 +68,7 @@ require_once "../php/dbconn.php";
 
     	<div class="mui-content">
     		
-        		    		<a href="/admin/order_suc.php">已完成订单</a>
+        <a href="/admin/order_suc.php">已完成订单</a>
 
         	<ul id="OA_task_2" class="mui-table-view">
 					

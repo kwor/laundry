@@ -108,7 +108,7 @@
 					<input id='password' type="password" name="pass" class=" mui-input" placeholder="請輸入密碼">
 				</div>
 			</form>
-			<form class="mui-input-group" style="background-color: #FFFFFF;">
+			<!--<form class="mui-input-group" style="background-color: #FFFFFF;">
 				<ul class="mui-table-view mui-table-view-chevron">
 					<li class="mui-table-view-cell" style="color:#D8D8D8; font-weight:100; font-size: 2vh;">
 						自動登錄
@@ -117,7 +117,7 @@
 						</div>
 					</li>
 				</ul>
-			</form>
+			</form>-->
 			<div class="mui-content-padded" >
 				<button id='login' style="border-radius: 2vw;" class="mui-btn mui-btn-block mui-btn-primary data-loading-text">登陸</button>
 				<div class="link-area"><a href="reg.php" id='reg'>註冊帳號</a> <span class="spliter">

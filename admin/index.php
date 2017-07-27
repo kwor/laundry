@@ -95,20 +95,20 @@
 			<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
 				<span class="mui-icon mui-icon-left-nav"></span>
 			</button>
-			<h1 class="mui-title">登陸</h1>
+			<h1 class="mui-title">业务管理登陸</h1>
 		</header>
 		<div class="mui-content" style="background-color: #FFFFFF;">
 			<form id='login-form' class="mui-input-group">
 				<div class="mui-input-row">
 					<span class="mui-icon mui-icon-contact"></span>
-					<input id='account' type="text" name="email" class=" mui-input" placeholder="請輸入郵箱">
+					<input id='username' type="text" name="username" class=" mui-input" placeholder="請輸入账号">
 				</div>
 				<div class="mui-input-row">
 					<span class="mui-icon mui-icon-locked"></span>
 					<input id='password' type="password" name="pass" class=" mui-input" placeholder="請輸入密碼">
 				</div>
 			</form>
-			<form class="mui-input-group" style="background-color: #FFFFFF;">
+			<!--<form class="mui-input-group" style="background-color: #FFFFFF;">
 				<ul class="mui-table-view mui-table-view-chevron">
 					<li class="mui-table-view-cell" style="color:#D8D8D8; font-weight:100; font-size: 2vh;">
 						自動登錄
@@ -117,10 +117,9 @@
 						</div>
 					</li>
 				</ul>
-			</form>
+			</form>-->
 			<div class="mui-content-padded" >
 				<button id='login' style="border-radius: 2vw;" class="mui-btn mui-btn-block mui-btn-primary data-loading-text">登陸</button>
-				<div class="link-area"><a href="reg.php" id='reg'>註冊帳號</a> <span class="spliter">
 					
 					<!--|</span> <a id='forgetPassword'>忘記密碼</a>-->
 				</div>
@@ -137,23 +136,18 @@
             $('#login').click(function () {
                 var data = $('#login-form').serialize();
                 $.ajax({
-                    url:'php/login.php',
+                    url:'alogin.php',
                     datatype:'json',
                     type:'post',
                     data:data,
                     success:function (msg) {
-                    	
-                     
                         var msg = JSON.parse(msg)
                         $('#msg p').text(msg[0].msg);
                         if(msg[0].code==200){
                             setTimeout(function () {
-                                location.href="kuser.php";
+                                location.href="order_list.php";
                             }, 1000);
-                        }
-                        
-                        
-                        
+                        }   
                     }
                 })
             })
