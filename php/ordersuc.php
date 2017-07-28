@@ -7,7 +7,8 @@ $orderid = $_POST['orderid'];
 
 if($orderid!=""){
     $sql = "update korder set status=1 and overtime='".date('Y-m-d H:i:s')."'  where id=".$orderid;
-
+echo  json_encode($sql);
+exit;
 	$res = $mysqli->query($sql);
 
 	if(!$res){
